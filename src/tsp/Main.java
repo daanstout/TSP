@@ -6,6 +6,7 @@
 package tsp;
 
 import java.awt.*;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,6 +16,10 @@ public class Main {
 
 public static void main(String[] args) {
     Scherm scherm = new Scherm();
+        scherm.setSize(800,600);
+        scherm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        scherm.setResizable(false);
+        scherm.setVisible(true);
 }
     
     

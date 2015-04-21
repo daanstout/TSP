@@ -36,10 +36,14 @@ public class Scherm extends JFrame implements ActionListener{
     
     public Scherm()
     {
-        this.setSize(800, 300);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("TSP");
-        this.setLayout(new FlowLayout());
+        JPanel P1 = new JPanel();
+        JPanel P2 = new JPanel();
+        JPanel P3 = new JPanel();
+        JPanel P4 = new JPanel();
+        JPanel P5 = new JPanel();
+        BorderLayout B = new BorderLayout();
+        JFrame F = new JFrame();
+        super.setTitle("TSP");
 
         this.jbStart = new JButton("Start");
         this.jbStop = new JButton("Stop");
@@ -66,10 +70,17 @@ public class Scherm extends JFrame implements ActionListener{
         JScrollPane scrollPane = new JScrollPane(tResultaat);
         add(scrollPane);
         
+        P1.setLayout(B);
+        P2.setLayout(B);
+        P3.setLayout(B);
+        P4.setLayout(B);
+        P5.setLayout(B);
         
-        this.add(jbStart);
-        this.add(jbStop);
-        this.add(jbImport);
+        P1.add(jbStart, B.CENTER);
+        P1.add(jbStop, B.CENTER);
+        P1.add(jbImport, B.CENTER);
+        
+        add(P1, B.WEST);
         this.add(jlSimulatie);
         this.add(jlResultaat);
         this.add(jlAlgoritme);
