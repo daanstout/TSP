@@ -12,7 +12,8 @@ import java.awt.*;
  * @author Coolbone
  */
 public class Main {
-    //hi
+    //h
+    //test
 public static void main(String[] args) {
     Scherm scherm = new Scherm();
 }
