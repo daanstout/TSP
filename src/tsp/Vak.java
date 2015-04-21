@@ -1,11 +1,10 @@
 package tsp;
 
 public class Vak {
-    int x;
-    int y;
+   private int x;
+   private int y;
     
-    
-    // Maakt een gekozen vak met x en y coordinaten 
+    // Maakt een gekozen vak met x en y coordinaten
     // Met opzet:  Vak vakA1 = new Vak(1, 1);
     
     public Vak(int x, int y){

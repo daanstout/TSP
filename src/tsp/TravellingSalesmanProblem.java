@@ -1,16 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tsp;
 
-/**
- *
- * @author Coolbone
- */
+
 public class TravellingSalesmanProblem {
+    private Magazijn magazijn;
+    private Vak route;
+    private String routeData;
+    private String Resultaat;
+    private String Algoritme;    
     
-    
-    
+
+
+public TravellingSalesmanProblem(Magazijn magazijn, Vak route, String Algoritme  ) {
+this.magazijn = magazijn;
+this.route = route;
+this.Algoritme = Algoritme;
+      
+        }
+
+public String getAlgoritme() {
+    return Algoritme; 
+}
+
+public String setResultaat() {
+    return Resultaat;
+}
+
+
+
 }
