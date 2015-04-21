@@ -4,6 +4,12 @@ package tsp;
 public class Magazijn {
   private Vak vak;
   private int aantalVakken;
-  private int grootteVakken;
-  //hLLO
+  
+  public Magazijn(int aantalVakken){
+      this.aantalVakken = aantalVakken;
+  }
+  
+  public int getAantalVakken(){
+      return aantalVakken;
+  }
 }
