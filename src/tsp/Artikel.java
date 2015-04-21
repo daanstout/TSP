@@ -11,4 +11,20 @@ package tsp;
  */
 public class Artikel {
     
+    private int artikelNummer;
+    private int grootte;
+    
+    public Artikel(int artikelNummer, int grootte){
+        this.artikelNummer = artikelNummer;
+        this.grootte = grootte;
+    }
+    
+    public int getArtikelNummer(){
+        return artikelNummer;
+    }
+    
+    public int getGrootte(){
+        return grootte;
+    }
+    
 }
