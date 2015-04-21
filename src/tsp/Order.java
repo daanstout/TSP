@@ -26,4 +26,8 @@ public class Order {
     public void addProduct(Artikel a){
         productLijst.add(a);
     }
+    
+    public void importXml(){
+        //TODO
+    }
 }

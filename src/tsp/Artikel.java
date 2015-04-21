@@ -13,10 +13,12 @@ public class Artikel {
     
     private int artikelNummer;
     private int grootte;
+    private String naam;
     
-    public Artikel(int artikelNummer, int grootte){
+    public Artikel(int artikelNummer, int grootte, String naam){
         this.artikelNummer = artikelNummer;
         this.grootte = grootte;
+        this.naam = naam;
     }
     
     public int getArtikelNummer(){
@@ -25,6 +27,10 @@ public class Artikel {
     
     public int getGrootte(){
         return grootte;
+    }
+    
+    public String getNaam(){
+        return naam;
     }
     
 }
