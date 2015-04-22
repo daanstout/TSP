@@ -6,13 +6,14 @@
 package tsp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
  * @author Coolbone
  */
 public class Order {
-    
+
     private int orderNummer;
     private ArrayList<Artikel> productLijst;
     private Klant klant;

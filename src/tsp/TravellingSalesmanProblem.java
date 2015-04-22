@@ -1,6 +1,8 @@
 
 package tsp;
 
+import java.util.ArrayList;
+
 
 public class TravellingSalesmanProblem {
     private Magazijn magazijn;
@@ -8,7 +10,6 @@ public class TravellingSalesmanProblem {
     private String routeData;
     private String Resultaat;
     private String Algoritme;    
-    
 
 
 public TravellingSalesmanProblem(Magazijn magazijn, Vak route, String Algoritme  ) {
@@ -25,7 +26,5 @@ public String getAlgoritme() {
 public String setResultaat() {
     return Resultaat;
 }
-
-
 
 }
