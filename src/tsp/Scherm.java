@@ -5,6 +5,8 @@
  */
 package tsp;
 
+
+import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -42,6 +44,7 @@ public class Scherm extends JFrame implements ActionListener{
         JPanel P4 = new JPanel();
         JPanel P5 = new JPanel();
         BorderLayout B = new BorderLayout();
+        GridLayout G = new GridLayout();
         JFrame F = new JFrame();
         super.setTitle("TSP");
 
@@ -70,17 +73,10 @@ public class Scherm extends JFrame implements ActionListener{
         JScrollPane scrollPane = new JScrollPane(tResultaat);
         add(scrollPane);
         
-        P1.setLayout(B);
-        P2.setLayout(B);
-        P3.setLayout(B);
-        P4.setLayout(B);
-        P5.setLayout(B);
-        
-        P1.add(jbStart, B.CENTER);
-        P1.add(jbStop, B.CENTER);
-        P1.add(jbImport, B.CENTER);
-        
         add(P1, B.WEST);
+        this.add(jbStart);
+        this.add(jbStop);
+        this.add(jbImport);
         this.add(jlSimulatie);
         this.add(jlResultaat);
         this.add(jlAlgoritme);
