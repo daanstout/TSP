@@ -6,14 +6,13 @@ import java.util.ArrayList;
 
 public class TravellingSalesmanProblem {
     private Magazijn magazijn;
-    private Vak route;
-    private String routeData;
+    private ArrayList<Artikel> routeData;
     private String Resultaat;
 
 
-public TravellingSalesmanProblem(Magazijn magazijn, Vak route) {
+public TravellingSalesmanProblem(Magazijn magazijn){
     this.magazijn = magazijn;
-    this.route = route;
+    routeData = new ArrayList<>();
 }
 
 public String setResultaat() {
