@@ -9,13 +9,14 @@ package tsp;
  *
  * @author Coolbone
  */
-public class Artikel {
+public class Artikel extends Vak{
     
     private int artikelNummer;
     private int grootte;
     private String naam;
     
-    public Artikel(int artikelNummer, int grootte, String naam){
+    public Artikel(int artikelNummer, int grootte, String naam, int x, int y){
+        super(x, y);
         this.artikelNummer = artikelNummer;
         this.grootte = grootte;
         this.naam = naam;
