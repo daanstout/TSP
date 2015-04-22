@@ -21,7 +21,7 @@ import java.awt.*;
  *
  * @author Coolbone
  */
-public class Scherm extends JFrame implements ActionListener{
+public class Scherm extends JFrame implements ActionListener {
 
     private JButton jbStart;
     private JButton jbStop;
@@ -35,6 +35,7 @@ public class Scherm extends JFrame implements ActionListener{
     private TravellingSalesmanProblem tsp;
     Dimension size;
     int count = 0;
+    private Timer t;
     
     
     public Scherm()
@@ -117,6 +118,15 @@ public class Scherm extends JFrame implements ActionListener{
         this.jcAlgoritme.addActionListener(this);
         
         setVisible(true);
+        
+        t = new Timer(100, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //dit loopt in een loop, programmeer hier je programmma.
+                
+            }
+        });
     }
     
     
@@ -124,6 +134,7 @@ public class Scherm extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource() == jbStart) {
+            t.start();
             System.out.println("Start");
         } else if (e.getSource() == jbStop) {
             System.out.println("Stop");
