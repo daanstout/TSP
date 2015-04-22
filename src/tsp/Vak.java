@@ -23,11 +23,11 @@ public class Vak {
     }
     
     // Gets de afstand voor het gegeven vak
-    public double distanceTo(Vak vak){
+    public int distanceTo(Vak vak){
         int xDistance = Math.abs(getX() - vak.getX());
         int yDistance = Math.abs(getY() - vak.getY());
-        double distance = Math.sqrt( (xDistance*xDistance) + (yDistance*yDistance) );
         
+        int distance = xDistance + yDistance;
         return distance;
     }
     
