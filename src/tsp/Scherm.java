@@ -44,14 +44,13 @@ public class Scherm extends JFrame implements ActionListener{
         JPanel P3 = new JPanel();
         JPanel P4 = new JPanel();
         JPanel P5 = new JPanel();
-        BorderLayout B = new BorderLayout();
-        GridLayout G = new GridLayout();
         JFrame F = new JFrame();
         this.setTitle("TSP");
         this.setSize(800,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setVisible(true);
+        
+        
 
         this.jbStart = new JButton("Start");
         this.jbStop = new JButton("Stop");
@@ -92,6 +91,10 @@ public class Scherm extends JFrame implements ActionListener{
         size = jbStart.getPreferredSize();
         jbStart.setBounds(insets.left+200, insets.top, size.width, size.height);
         
+        size = jcAlgoritme.getPreferredSize();
+        jcAlgoritme.setBounds(insets.left+500, insets.top, size.width, size.height);
+        
+       
         jcAlgoritme.addItem("Kies algoritme");
         jcAlgoritme.addItem("Volledige enumeratie");
         jcAlgoritme.addItem("Simpel gretig algoritme");
