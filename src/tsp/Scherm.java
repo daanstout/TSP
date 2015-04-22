@@ -33,6 +33,7 @@ public class Scherm extends JFrame implements ActionListener{
     private JComboBox jcAlgoritme; 
     private JTable tResultaat;
     private TravellingSalesmanProblem tsp;
+    Dimension size;
     int count = 0;
     
     
@@ -46,7 +47,11 @@ public class Scherm extends JFrame implements ActionListener{
         BorderLayout B = new BorderLayout();
         GridLayout G = new GridLayout();
         JFrame F = new JFrame();
-        super.setTitle("TSP");
+        this.setTitle("TSP");
+        this.setSize(800,600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setVisible(true);
 
         this.jbStart = new JButton("Start");
         this.jbStop = new JButton("Stop");
@@ -66,6 +71,9 @@ public class Scherm extends JFrame implements ActionListener{
             {"Minimal spanning tree", "27 DM", "4 sec"},
         };
         
+        Insets insets = this.getInsets();
+        
+        
         this.tResultaat = new JTable(data, columnNames);
         tResultaat.setPreferredScrollableViewportSize(new Dimension(500, 50));
         tResultaat.setFillsViewportHeight(true);
@@ -73,7 +81,6 @@ public class Scherm extends JFrame implements ActionListener{
         JScrollPane scrollPane = new JScrollPane(tResultaat);
         add(scrollPane);
         
-        add(P1, B.WEST);
         this.add(jbStart);
         this.add(jbStop);
         this.add(jbImport);
@@ -82,7 +89,9 @@ public class Scherm extends JFrame implements ActionListener{
         this.add(jlAlgoritme);
         this.add(jlOrdernr);
         
-
+        size = jbStart.getPreferredSize();
+        jbStart.setBounds(insets.left+200, insets.top, size.width, size.height);
+        
         jcAlgoritme.addItem("Kies algoritme");
         jcAlgoritme.addItem("Volledige enumeratie");
         jcAlgoritme.addItem("Simpel gretig algoritme");

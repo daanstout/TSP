@@ -16,10 +16,10 @@ public class Main {
 
 public static void main(String[] args) {
     Scherm scherm = new Scherm();
-        scherm.setSize(800,600);
-        scherm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        scherm.setResizable(false);
-        scherm.setVisible(true);
+        
+        
+        Insets insets = scherm.getInsets();
+        scherm.setSize(700 + insets.left + insets.right, 520 + insets.top + insets.bottom);
 }
     
     
