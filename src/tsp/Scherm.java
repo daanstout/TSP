@@ -89,18 +89,27 @@ public class Scherm extends JFrame implements ActionListener{
         this.add(jlOrdernr);
         
         size = jbStart.getPreferredSize();
-        jbStart.setBounds(insets.left+200, insets.top, size.width, size.height);
+        jbStart.setBounds(insets.left, insets.top, size.width, size.height);
         
-        size = jcAlgoritme.getPreferredSize();
-        jcAlgoritme.setBounds(insets.left+500, insets.top, size.width, size.height);
-        
-       
         jcAlgoritme.addItem("Kies algoritme");
         jcAlgoritme.addItem("Volledige enumeratie");
         jcAlgoritme.addItem("Simpel gretig algoritme");
         jcAlgoritme.addItem("Minimal spanning tree");
         
-        this.add(jcAlgoritme);
+//        JPanel a = new JPanel(new FlowLayout());
+//        a.add(jcAlgoritme);
+//        a.setBorder(BorderFactory.createLineBorder(Color.black));
+        
+        JPanel fieldPanel = new JPanel(new GridLayout(1, 1)); // 2 rows 1 column
+        add(fieldPanel, BorderLayout.CENTER);
+        
+        fieldPanel.add(jcAlgoritme);
+        fieldPanel.setPreferredSize(new Dimension(200,200));
+        
+        size = fieldPanel.getPreferredSize();
+        fieldPanel.setBounds(insets.left, insets.top+200, size.width, size.height);
+        
+        //add(a);
         
         this.jbStart.addActionListener(this);
         this.jbStop.addActionListener(this);

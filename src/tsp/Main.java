@@ -17,9 +17,8 @@ public class Main {
 public static void main(String[] args) {
     Scherm scherm = new Scherm();
         
-        
-        Insets insets = scherm.getInsets();
-        scherm.setSize(700 + insets.left + insets.right, 520 + insets.top + insets.bottom);
+    Insets insets = scherm.getInsets();
+    scherm.setSize(700 + insets.left + insets.right, 520 + insets.top + insets.bottom);
 }
     
     
