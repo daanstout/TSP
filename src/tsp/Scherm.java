@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tsp;
-
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -17,13 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.table.DefaultTableCellRenderer;
 
-
-
-
-/**
- *
- * @author Coolbone
- */
 public class Scherm extends JFrame implements ActionListener {
 
     private JButton jbStart;
@@ -43,7 +30,6 @@ public class Scherm extends JFrame implements ActionListener {
     private ArrayList<String> Algoritmes;
     private ArrayList<String> Afstanden;
     private ArrayList<String> ALTijd;
-    
     
     public Scherm()
     {
