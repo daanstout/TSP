@@ -13,6 +13,9 @@ import java.awt.FlowLayout;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.table.DefaultTableCellRenderer;
 
 
 
@@ -32,10 +35,14 @@ public class Scherm extends JFrame implements ActionListener {
     private JLabel jlOrdernr;
     private JComboBox jcAlgoritme; 
     private JTable tResultaat;
+    private JLabel jlNummer;
     private TravellingSalesmanProblem tsp;
     Dimension size;
     int count = 0;
     private Timer t;
+    private ArrayList<String> Algoritmes;
+    private ArrayList<String> Afstanden;
+    private ArrayList<String> ALTijd;
     
     
     public Scherm()
@@ -51,46 +58,103 @@ public class Scherm extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         
-        
+        Algoritmes = new ArrayList<>();
+        Afstanden = new ArrayList<>();
+        ALTijd = new ArrayList<>();
 
-        this.jbStart = new JButton("Start");
-        this.jbStop = new JButton("Stop");
-        this.jbImport = new JButton("Import");
-        this.jlSimulatie = new JLabel("Simulatie");
-        this.jlResultaat = new JLabel("Resultaat");
-        this.jlAlgoritme = new JLabel("Algoritme");
-        this.jlOrdernr = new JLabel("Order nummer");
-        this.jcAlgoritme = new JComboBox();
+        jbStart = new JButton("Start simulatie");
+        jbStop = new JButton("Stop simulatie");
+        jbImport = new JButton("Import order");
+        jlSimulatie = new JLabel("Simulatie");
+        jlResultaat = new JLabel("Resultaat");
+        jlAlgoritme = new JLabel("Algoritme");
+        jlOrdernr = new JLabel("Order nummer");
+        jcAlgoritme = new JComboBox();
+        jlNummer = new JLabel("nummer");
         
-        // table info
-        String[] columnNames = {"Algoritme", "Afstand", "Tijd"};
+        Font header = new Font("Arial", Font.BOLD, 25);
+        Font defaultFont = new Font("Arial", Font.PLAIN, 14);
         
-        Object[][] data = {
-            {"Volledige enumeratie", "25 DM", "5 sec"},
-            {"Simpel gretig algoritme", "30 DM", "6 sec"},
-            {"Minimal spanning tree", "27 DM", "4 sec"},
-        };
+        Algoritmes.add("Volledige enumeratie");
+        Algoritmes.add("Simpel gretig algoritme");
+        Algoritmes.add("Minimal spanning tree");
+        Afstanden.add("25 DM");
+        Afstanden.add("30 DM");
+        Afstanden.add("27 DM");
+        ALTijd.add("5 sec");
+        ALTijd.add("7 sec");
+        ALTijd.add("6 sec");
         
         Insets insets = this.getInsets();
         
+        ArrayList<String> wachtrijHeading = new ArrayList<String>(Arrays.asList("Algoritme", "Afstand", "Tijd"));
+        tResultaat = new JTable(new PakketTableModel(Algoritmes, Afstanden, ALTijd, wachtrijHeading));
+        getContentPane().add(new JScrollPane(tResultaat), BorderLayout.CENTER);
+        tResultaat.setPreferredSize(new Dimension(275, 422));
+        tResultaat.setFont(defaultFont);
+        tResultaat.setRowHeight(20);
         
-        this.tResultaat = new JTable(data, columnNames);
-        tResultaat.setPreferredScrollableViewportSize(new Dimension(500, 50));
-        tResultaat.setFillsViewportHeight(true);
 
-        JScrollPane scrollPane = new JScrollPane(tResultaat);
-        add(scrollPane);
+        DefaultTableCellRenderer wachtrijRenderer = new DefaultTableCellRenderer();
+        wachtrijRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        tResultaat.getColumnModel().getColumn(0).setCellRenderer(wachtrijRenderer);
+        tResultaat.getTableHeader().setReorderingAllowed(false);
+        tResultaat.getTableHeader().setFont(defaultFont);
         
-        this.add(jbStart);
-        this.add(jbStop);
-        this.add(jbImport);
-        this.add(jlSimulatie);
-        this.add(jlResultaat);
-        this.add(jlAlgoritme);
-        this.add(jlOrdernr);
+        tResultaat.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tResultaat.getColumnModel().getColumn(1).setPreferredWidth(15);
+        tResultaat.getColumnModel().getColumn(2).setPreferredWidth(10);
+        
+        JPanel j = new JPanel(new BorderLayout());
+        j.add(tResultaat.getTableHeader(), BorderLayout.PAGE_START);
+        j.add(tResultaat, BorderLayout.CENTER);
+        j.setBorder(BorderFactory.createLineBorder(Color.black));
+        j.add(new JScrollPane(tResultaat));
+        j.setPreferredSize(new Dimension(380,150));
+        add(j);
+        
+        
+        size = j.getPreferredSize();
+        j.setBounds(insets.left+30, insets.top+400, size.width, size.height);
+        
+        add(jbStart);
+        add(jbStop);
+        add(jbImport);
+        add(jlSimulatie);
+        add(jlResultaat);
+        add(jlAlgoritme);
+        add(jlOrdernr);
+        add(jlNummer);
+        
+        jlSimulatie.setFont(header);
+        jlResultaat.setFont(header);
+        jlAlgoritme.setFont(defaultFont);
+        jlOrdernr.setFont(defaultFont);
+        jlNummer.setFont(defaultFont);
         
         size = jbStart.getPreferredSize();
-        jbStart.setBounds(insets.left, insets.top, size.width, size.height);
+        jbStart.setBounds(insets.left+30, insets.top+300, size.width, size.height);
+        
+        size = jbStop.getPreferredSize();
+        jbStop.setBounds(insets.left+180, insets.top+300, size.width, size.height);
+        
+        size = jbImport.getPreferredSize();
+        jbImport.setBounds(insets.left+30, insets.top+125, size.width, size.height);
+        
+        size = jlSimulatie.getPreferredSize();
+        jlSimulatie.setBounds(insets.left+450, insets.top+45, size.width, size.height);
+        
+        size = jlResultaat.getPreferredSize();
+        jlResultaat.setBounds(insets.left+30, insets.top+350, size.width, size.height);
+        
+        size = jlAlgoritme.getPreferredSize();
+        jlAlgoritme.setBounds(insets.left+30, insets.top+50, size.width, size.height);
+        
+        size = jlOrdernr.getPreferredSize();
+        jlOrdernr.setBounds(insets.left+30, insets.top+220, size.width, size.height);
+        
+        size = jlNummer.getPreferredSize();
+        jlNummer.setBounds(insets.left+180, insets.top+220, size.width, size.height);
         
         jcAlgoritme.addItem("Kies algoritme");
         jcAlgoritme.addItem("Volledige enumeratie");
@@ -108,7 +172,7 @@ public class Scherm extends JFrame implements ActionListener {
         fieldPanel.setPreferredSize(new Dimension(180,20));
         
         size = fieldPanel.getPreferredSize();
-        fieldPanel.setBounds(insets.left, insets.top+100, size.width, size.height);
+        fieldPanel.setBounds(insets.left+180, insets.top+50, size.width, size.height);
         
         add(a);
         
