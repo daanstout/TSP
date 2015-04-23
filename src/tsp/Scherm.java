@@ -97,20 +97,20 @@ public class Scherm extends JFrame implements ActionListener {
         jcAlgoritme.addItem("Simpel gretig algoritme");
         jcAlgoritme.addItem("Minimal spanning tree");
         
-//        JPanel a = new JPanel(new FlowLayout());
-//        a.add(jcAlgoritme);
-//        a.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel a = new JPanel(new FlowLayout());
+        a.add(jcAlgoritme);
+        a.setBorder(BorderFactory.createLineBorder(Color.black));
         
         JPanel fieldPanel = new JPanel(new GridLayout(1, 1)); // 2 rows 1 column
         add(fieldPanel, BorderLayout.CENTER);
         
         fieldPanel.add(jcAlgoritme);
-        fieldPanel.setPreferredSize(new Dimension(200,200));
+        fieldPanel.setPreferredSize(new Dimension(180,20));
         
         size = fieldPanel.getPreferredSize();
-        fieldPanel.setBounds(insets.left, insets.top+200, size.width, size.height);
+        fieldPanel.setBounds(insets.left, insets.top+100, size.width, size.height);
         
-        //add(a);
+        add(a);
         
         this.jbStart.addActionListener(this);
         this.jbStop.addActionListener(this);
