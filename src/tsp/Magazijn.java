@@ -4,19 +4,19 @@ package tsp;
 import java.util.ArrayList;
 
 public class Magazijn {
-  private Vak vak;
   private int aantalVakken;
-  private static ArrayList Coordinates = new ArrayList<Vak>();
+  private ArrayList Coordinates;
   
   public Magazijn(int aantalVakken){
       this.aantalVakken = aantalVakken;
+      Coordinates = new ArrayList<Vak>();
   }
   
-  public static void addVak(Vak vak) {
+  public void addVak(Vak vak) {
         Coordinates.add(vak);
     }
 
-public static Vak getVak(int index){
+public Vak getVak(int index){
         return (Vak)Coordinates.get(index);
     }
 
