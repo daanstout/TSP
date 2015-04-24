@@ -6,6 +6,7 @@
 package tsp;
 
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -20,6 +21,17 @@ public static void main(String[] args) {
     Insets insets = scherm.getInsets();
     scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);
 }
+
+public static ArrayList VaktoInt(ArrayList<Vak> k){
+        ArrayList<Integer> a = new ArrayList<>();
+        
+        for(Vak h : k){
+            a.add(h.getNr());
+        }
+        
+        return a;
+    }
+    
     
     
 //        Insets insets = scherm.getInsets();
