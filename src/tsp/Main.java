@@ -95,9 +95,9 @@ public class Main {
         Order q = new Order(2, w);
         
         
-        
-        q.addProduct(A4);
         q.addProduct(A3);
+        q.addProduct(A4);
+        
         q.addProduct(A1);
         q.addProduct(A2);
         

@@ -37,43 +37,43 @@ public class Order {
     }
     
     public void nearestNeighboor(){
-        ArrayList<Artikel> a = new ArrayList<>();
-        int r = 0;
-        while(r < productLijst.size()){
-            Artikel w = productLijst.get(r);
-            if(w.getX() == 1 &&w.getY() == 1){
-                a.add(w);
-                productLijst.remove(w);
+        ArrayList<Artikel> artikelLijst = new ArrayList<>();
+        int counter = 0;
+        while(counter < productLijst.size()){
+            Artikel startArtikel = productLijst.get(counter);
+            if(startArtikel.getX() == 1 &&startArtikel.getY() == 1){
+                artikelLijst.add(startArtikel);
+                productLijst.remove(startArtikel);
             }
-            r++;
+            counter++;
         }
-        r = 0;
+        counter = 0;
         
-        if(a.isEmpty()){
+        if(artikelLijst.isEmpty()){
             Artikel A1 = new Artikel(1, 1, null, 1, 1, 1);
-            a.add(A1);
+            artikelLijst.add(A1);
         }
         
         while(!productLijst.isEmpty()){
-            int d = 0;
-            int c = 100;
-            r = 0;
-            while(r < productLijst.size()){
-                int b = a.get(a.size()-1).distanceTo(productLijst.get(r));
-                if(b <= c){
-                    c = b;
-                    d = r;
+            int artikelToAdd = 0;
+            int afstandTocheck = 100;
+            counter = 0;
+            while(counter < productLijst.size()){
+                int afstand = artikelLijst.get(artikelLijst.size()-1).distanceTo(productLijst.get(counter));
+                if(afstand <= afstandTocheck){
+                    afstandTocheck = afstand;
+                    artikelToAdd = counter;
                 }
-                r++;
+                counter++;
             }
-            a.add(productLijst.get(d));
-            productLijst.remove(d);
+            artikelLijst.add(productLijst.get(artikelToAdd));
+            productLijst.remove(artikelToAdd);
         }
         
-        if(a.get(0).getNaam() == null){
-            a.remove(0);
+        if(artikelLijst.get(0).getNaam() == null){
+            artikelLijst.remove(0);
         }
         
-        productLijst = a;
+        productLijst = artikelLijst;
     }
 }
