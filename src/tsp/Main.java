@@ -17,10 +17,10 @@ import static tsp.TravellingSalesmanProblem.permute;
 public class Main {
 
     public static void main(String[] args) {
-        Scherm scherm = new Scherm();
-        
-        Insets insets = scherm.getInsets();
-        scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);
+//        Scherm scherm = new Scherm();
+//        
+//        Insets insets = scherm.getInsets();
+//        scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);
         
         Magazijn mag = new Magazijn(25);
         
@@ -85,8 +85,9 @@ public class Main {
         vakLijst.add(vak5);
         vakLijst.add(vak19);
         
-        permute(VaktoInt(vakLijst), 0);
+        ArrayList q = permute(VaktoInt(vakLijst), 0);
         
+        System.out.println(InttoVak(q, mag));
     }
 
     public static ArrayList VaktoInt(ArrayList<Vak> k){
@@ -103,14 +104,20 @@ public class Main {
         ArrayList<Vak> a = new ArrayList<>();
         
         for(ArrayList<Integer> h : k){
-            Integer q = h.get(0);
-            Integer w = h.get(1);
-            Integer e = h.get(2);
-            
-            Integer l = 0;
-            
-            l = l+p.getVak(q).distanceTo(p.getVak(w));
-            l = l+p.getVak(w).distanceTo(p.getVak(e));
+            for(Integer l : h){
+                int i = 0;
+                while(i<p.getAantalVakken()){
+                    if(l == p.getVak(i).getNr()){
+                        a.add(p.getVak(i));
+                    }
+                    i++;
+                }
+            }
+//            Integer q = h.get(0);
+//            Integer w = h.get(1);
+//            Integer e = h.get(2);
+//            
+//            Integer l = 0;
         }
         
         return a;

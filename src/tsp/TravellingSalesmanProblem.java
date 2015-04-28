@@ -36,7 +36,7 @@ import java.util.List;
             a.add(arr);
         }
         if (k == arr.size() -1){
-            //System.out.println(Arrays.toString(arr.toArray()));
+            System.out.println(Arrays.toString(arr.toArray()));
         }
         
         return a;
