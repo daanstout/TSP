@@ -49,7 +49,7 @@ public class PakketTableModel extends AbstractTableModel {
                     return data3.get(rowIndex);
                 }
             }else{
-                return 0;
+                return null;
             }
         } catch (IndexOutOfBoundsException e) {
             return null;
