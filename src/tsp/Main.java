@@ -17,10 +17,10 @@ import static tsp.TravellingSalesmanProblem.permute;
 public class Main {
 
     public static void main(String[] args) {
-        Scherm scherm = new Scherm();
-        
-        Insets insets = scherm.getInsets();
-        scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);
+//        Scherm scherm = new Scherm();
+//        
+//        Insets insets = scherm.getInsets();
+//        scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);
         
         Magazijn mag = new Magazijn(25);
         
