@@ -76,6 +76,10 @@ public class Main {
         mag.addVak(vak24);
         mag.addVak(vak25);
         
+        Artikel A1 = new Artikel(1, 1, "Mobiel", 1, 1, 1);
+        Artikel A2 = new Artikel(2, 1, "Mobiel", 2, 1, 2);
+        Artikel A3 = new Artikel(3, 1, "Mobiel", 3, 1, 3);
+        Artikel A4 = new Artikel(4, 1, "Mobiel", 4, 1, 4);
         
         System.out.println(vak1.distanceTo(vak9));
         
@@ -84,42 +88,57 @@ public class Main {
         vakLijst.add(vak1);
         vakLijst.add(vak5);
         vakLijst.add(vak19);
+        vakLijst.add(vak21);
         
-        ArrayList q = permute(VaktoInt(vakLijst), 0);
+        Klant w = new Klant("Daan", "Stout", "Schellerpad 48", "8017 AM", "Zwolle");
         
-        System.out.println(InttoVak(q, mag));
+        Order q = new Order(2, w);
+        
+        
+        q.addProduct(A2);
+        q.addProduct(A4);
+        q.addProduct(A3);
+        q.addProduct(A1);
+        
+        q.nearestNeighboor();
+        System.out.println(q.getProductLijst());
+        
+        
+//        ArrayList q = permute(VaktoInt(vakLijst), 0);
+//        
+//        System.out.println(InttoVak(q, mag));
     }
 
-    public static ArrayList VaktoInt(ArrayList<Vak> k){
-        ArrayList<Integer> a = new ArrayList<>();
-        
-        for(Vak h : k){
-            a.add(h.getNr());
-        }
-        
-        return a;
-    }
-    
-    public static ArrayList InttoVak(ArrayList<ArrayList<Integer>> k, Magazijn p){
-        ArrayList<Vak> a = new ArrayList<>();
-        
-        for(ArrayList<Integer> h : k){
-            for(Integer l : h){
-                int i = 0;
-                while(i<p.getAantalVakken()){
-                    if(l == p.getVak(i).getNr()){
-                        a.add(p.getVak(i));
-                    }
-                    i++;
-                }
-            }
+//    public static ArrayList VaktoInt(ArrayList<Vak> k){
+//        ArrayList<Integer> a = new ArrayList<>();
+//        
+//        for(Vak h : k){
+//            a.add(h.getNr());
+//        }
+//        
+//        return a;
+//    }
+//    
+//    public static ArrayList InttoVak(ArrayList<ArrayList<Integer>> k, Magazijn p){
+//        ArrayList<Vak> a = new ArrayList<>();
+//        
+//        for(ArrayList<Integer> h : k){
+//            for(Integer l : h){
+//                int i = 0;
+//                while(i<p.getAantalVakken()){
+//                    if(l == p.getVak(i).getNr()){
+//                        a.add(p.getVak(i));
+//                    }
+//                    i++;
+//                }
+//            }
 //            Integer q = h.get(0);
 //            Integer w = h.get(1);
 //            Integer e = h.get(2);
 //            
 //            Integer l = 0;
-        }
-        
-        return a;
-    }
+//        }
+//        
+//        return a;
+//    }
 }

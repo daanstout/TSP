@@ -6,7 +6,7 @@ public class Vak {
    private int y;
     
     // Maakt een gekozen vak met x en y coordinaten
-    // Met opzet:  Vak vakA1 = new Vak(1, 1);
+    // Met opzet:  Vak vakA1 = new Vak(1, 1, 1);
     
     public Vak(int x, int y, int nr){
         this.x = x;
@@ -39,6 +39,6 @@ public class Vak {
     
     @Override
     public String toString(){
-        return getX()+", "+getY();
+        return "Vak"+vaknr;
     }
 }
