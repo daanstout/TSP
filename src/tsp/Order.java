@@ -38,10 +38,7 @@ public class Order {
     
     public void nearestNeighboor(){
         ArrayList<Artikel> a = new ArrayList<>();
-        Artikel p;
         int r = 0;
-        
-//        for(Artikel w : productLijst){
         while(r < productLijst.size()){
             Artikel w = productLijst.get(r);
             if(w.getX() == 1 &&w.getY() == 1){
@@ -50,7 +47,6 @@ public class Order {
             }
             r++;
         }
-        
         r = 0;
         
         if(a.isEmpty()){
@@ -58,24 +54,24 @@ public class Order {
             a.add(A1);
         }
         
-        
-        
         while(!productLijst.isEmpty()){
             int d = 0;
-            
+            int c = 100;
+            r = 0;
             while(r < productLijst.size()){
-                int c = 100;
-                int b = a.get(0).distanceTo(productLijst.get(r));
-                System.out.println(productLijst.get(r)+" is afstand "+b);
-                if(b < c){
+                int b = a.get(a.size()-1).distanceTo(productLijst.get(r));
+                if(b <= c){
                     c = b;
                     d = r;
                 }
-                
                 r++;
             }
             a.add(productLijst.get(d));
             productLijst.remove(d);
+        }
+        
+        if(a.get(0).getNaam() == null){
+            a.remove(0);
         }
         
         productLijst = a;

@@ -76,10 +76,10 @@ public class Main {
         mag.addVak(vak24);
         mag.addVak(vak25);
         
-        Artikel A1 = new Artikel(1, 1, "Mobiel", 1, 1, 1);
-        Artikel A2 = new Artikel(2, 1, "Mobiel", 2, 1, 2);
-        Artikel A3 = new Artikel(3, 1, "Mobiel", 3, 1, 3);
-        Artikel A4 = new Artikel(4, 1, "Mobiel", 4, 1, 4);
+        Artikel A1 = new Artikel(1, 1, "Mobiel", 2, 1, 1);
+        Artikel A2 = new Artikel(2, 1, "Mobiel", 2, 5, 2);
+        Artikel A3 = new Artikel(3, 1, "Mobiel", 1, 2, 3);
+        Artikel A4 = new Artikel(4, 1, "Mobiel", 3, 3, 4);
         
         System.out.println(vak1.distanceTo(vak9));
         
@@ -95,10 +95,11 @@ public class Main {
         Order q = new Order(2, w);
         
         
-        q.addProduct(A2);
+        
         q.addProduct(A4);
         q.addProduct(A3);
         q.addProduct(A1);
+        q.addProduct(A2);
         
         q.nearestNeighboor();
         System.out.println(q.getProductLijst());
