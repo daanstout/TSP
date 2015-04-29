@@ -7,8 +7,10 @@ package tsp;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JFrame;
-import static tsp.TravellingSalesmanProblem.permute;
+import static tsp.Permute.permute;
+
 
 /**
  *
@@ -105,10 +107,10 @@ public class Main {
         q.nearestNeighboor();
         System.out.println(q.getProductLijst());
         
+        System.out.println("\n");
+        System.out.println("Volledige enumeratie :\n");
         
-//        ArrayList q = permute(VaktoInt(vakLijst), 0);
-//        
-//        System.out.println(InttoVak(q, mag));
+        permute(Arrays.asList(vak4, vak14, vak21), 0);
     }
 
 //    public static ArrayList VaktoInt(ArrayList<Vak> k){
