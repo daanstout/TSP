@@ -27,7 +27,6 @@ import java.util.List;
         routeData.add(a);
     }
 
-<<<<<<< HEAD
     static ArrayList permute(ArrayList<Integer> arr, int k){
         ArrayList<ArrayList> a = new ArrayList<>();
         for(int i = k; i < arr.size(); i++){
@@ -42,7 +41,4 @@ import java.util.List;
         }
         return a;
     }
-=======
-    
->>>>>>> origin/master
 }
