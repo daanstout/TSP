@@ -99,6 +99,19 @@ public class Scherm extends JFrame implements ActionListener {
         size = j.getPreferredSize();
         j.setBounds(insets.left+30, insets.top+400, size.width, size.height);
         
+        tSimulator = new Tekenpanel(this.magazijn);
+        
+        JPanel drawPanel = new JPanel();
+        
+        JLabel test = new JLabel("test");
+        
+        drawPanel.setBounds(insets.left+450, insets.top+100, 400, 400);
+        drawPanel.add(tSimulator);
+//        drawPanel.add(test);
+        
+        System.out.println(drawPanel.getBounds());
+        
+        add(drawPanel);
         add(jbStart);
         add(jbStop);
         add(jbImport);
@@ -158,26 +171,18 @@ public class Scherm extends JFrame implements ActionListener {
         
         add(a);
         
+        
+        
+        
+        
         this.jbStart.addActionListener(this);
         this.jbStop.addActionListener(this);
         this.jbImport.addActionListener(this);
         this.jcAlgoritme.addActionListener(this);
         
-        tSimulator = new Tekenpanel(this.magazijn);
-        
-        Tekenpanel paintPanel = new Tekenpanel(this.magazijn);
-//        add(paintPanel);
-        //paintPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
-        
-        
-        size = paintPanel.getPreferredSize();
-        paintPanel.setBounds(insets.left+450, insets.top+125, size.width, size.height);
-//        paintPanel.add(tSimulator);
-        add(paintPanel, BorderLayout.CENTER);
-        
-        paintPanel.setLocation(450, 125);
-        
-        setVisible(true);
+        revalidate();
+        pack();
+        this.setVisible(true);
         
         t = new Timer(100, new ActionListener() {
 

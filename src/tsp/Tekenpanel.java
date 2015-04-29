@@ -11,8 +11,8 @@ public class Tekenpanel extends JPanel{
     public Tekenpanel(Magazijn magazijn){
         this.magazijn = magazijn;
         
-        setPreferredSize(new Dimension(200,200));
-        setMaximumSize(new Dimension(200,200));
+        setPreferredSize(new Dimension(400,400));
+//        setMaximumSize(new Dimension(200,200));
         setMinimumSize(new Dimension(200,200));
     }
     
@@ -20,7 +20,7 @@ public class Tekenpanel extends JPanel{
         super.paintComponent(g);
         g.setColor(Color.BLUE);
         g.fillRect(0, 0, 10, 10);
-        g.drawRect(0, 0, 200, 200);
-        
+        g.drawRect(0, 0, 398, 298);
+        g.fillRect(0, 190, 10, 10);
     }
 }
