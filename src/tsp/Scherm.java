@@ -30,15 +30,11 @@ public class Scherm extends JFrame implements ActionListener {
     private ArrayList<String> Algoritmes;
     private ArrayList<String> Afstanden;
     private ArrayList<String> ALTijd;
+    private Tekenpanel tSimulator;
+    private Magazijn magazijn;
     
-    public Scherm()
-    {
-        JPanel P1 = new JPanel();
-        JPanel P2 = new JPanel();
-        JPanel P3 = new JPanel();
-        JPanel P4 = new JPanel();
-        JPanel P5 = new JPanel();
-        JFrame F = new JFrame();
+    public Scherm(Magazijn magazijn){
+        this.magazijn = magazijn;
         this.setTitle("TSP");
         this.setSize(800,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -166,6 +162,18 @@ public class Scherm extends JFrame implements ActionListener {
         this.jbStop.addActionListener(this);
         this.jbImport.addActionListener(this);
         this.jcAlgoritme.addActionListener(this);
+        
+        tSimulator = new Tekenpanel(this.magazijn);
+        
+        JPanel paintPanel = new JPanel();
+        
+        paintPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
+        
+        
+        size = paintPanel.getPreferredSize();
+        paintPanel.setBounds(insets.left+450, insets.top+125, 200, 200);
+        paintPanel.add(tSimulator);
+        add(paintPanel, BorderLayout.CENTER);
         
         setVisible(true);
         

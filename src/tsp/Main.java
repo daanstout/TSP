@@ -19,10 +19,7 @@ import static tsp.Permute.permute;
 public class Main {
 
     public static void main(String[] args) {
-//        Scherm scherm = new Scherm();
-//        
-//        Insets insets = scherm.getInsets();
-//        scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);
+
         
         Magazijn mag = new Magazijn(25);
         
@@ -109,6 +106,11 @@ public class Main {
         
         System.out.println("\n");
         System.out.println("Volledige enumeratie :\n");
+        
+        Scherm scherm = new Scherm(mag);
+        
+        Insets insets = scherm.getInsets();
+        scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);
         
         permute(Arrays.asList(vak4, vak14, vak21), 0);
     }
