@@ -5,9 +5,12 @@
  */
 package tsp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -15,18 +18,18 @@ import java.util.List;
  */
 public class Permute {
     
-    
     static void permute(List<Vak> arr, int k){
         for(int i = k; i < arr.size(); i++){
             Collections.swap(arr, i, k);
             permute(arr, k+1);
             Collections.swap(arr, k, i);
         }
+
         if (k == arr.size() -1){
 
             // Standaard startpunt
             Vak startPunt = new Vak(1,1,0);
-            
+                
                 int totDistance = 0;
                 int count = 1;
                 totDistance += startPunt.distanceTo(arr.get(0));
@@ -44,9 +47,9 @@ public class Permute {
 
                 }
                 System.out.println(arr.toString() + "\n" + totDistance);
-                
         }
     }
+ 
     
 //    public static ArrayList VaktoInt(ArrayList<Vak> k){
 //        ArrayList<Integer> a = new ArrayList<>();
@@ -87,6 +90,6 @@ public class Permute {
         Vak vak25 = new Vak(5, 5, 25);
         
         permute(Arrays.asList(vak4, vak14, vak21), 0);
-       
+
     }
 }
