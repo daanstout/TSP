@@ -165,15 +165,17 @@ public class Scherm extends JFrame implements ActionListener {
         
         tSimulator = new Tekenpanel(this.magazijn);
         
-        JPanel paintPanel = new JPanel();
-        
-        paintPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
+        Tekenpanel paintPanel = new Tekenpanel(this.magazijn);
+//        add(paintPanel);
+        //paintPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
         
         
         size = paintPanel.getPreferredSize();
-        paintPanel.setBounds(insets.left+450, insets.top+125, 200, 200);
-        paintPanel.add(tSimulator);
+        paintPanel.setBounds(insets.left+450, insets.top+125, size.width, size.height);
+//        paintPanel.add(tSimulator);
         add(paintPanel, BorderLayout.CENTER);
+        
+        paintPanel.setLocation(450, 125);
         
         setVisible(true);
         
