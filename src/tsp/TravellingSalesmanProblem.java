@@ -53,7 +53,6 @@ import java.util.List;
             }
             counter++;
         }
-        counter = 0;
         
         if(artikelLijst.isEmpty()){
             Artikel A1 = new Artikel(1, 1, null, 1, 1, 1);
