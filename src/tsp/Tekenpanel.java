@@ -24,6 +24,7 @@ public class Tekenpanel extends JPanel{
         this.order = order;
         
         setPreferredSize(new Dimension(400,400));
+//        setMaximumSize(new Dimension(200,200));
         setMinimumSize(new Dimension(200,200));
         
         boxWidth = (PWIDTH - (2 * padding)) / xVak;
