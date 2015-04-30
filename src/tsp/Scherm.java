@@ -32,9 +32,11 @@ public class Scherm extends JFrame implements ActionListener {
     private ArrayList<String> ALTijd;
     private Tekenpanel tSimulator;
     private Magazijn magazijn;
+    private Order order;
     
-    public Scherm(Magazijn magazijn){
+    public Scherm(Magazijn magazijn, Order order){
         this.magazijn = magazijn;
+        this.order = order;
         this.setTitle("TSP");
         this.setSize(800,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +101,7 @@ public class Scherm extends JFrame implements ActionListener {
         size = j.getPreferredSize();
         j.setBounds(insets.left+30, insets.top+400, size.width, size.height);
         
-        tSimulator = new Tekenpanel(this.magazijn);
+        tSimulator = new Tekenpanel(this.order);
         
         JPanel drawPanel = new JPanel();
         
@@ -107,9 +109,6 @@ public class Scherm extends JFrame implements ActionListener {
         
         drawPanel.setBounds(insets.left+450, insets.top+100, 400, 400);
         drawPanel.add(tSimulator);
-//        drawPanel.add(test);
-        
-        System.out.println(drawPanel.getBounds());
         
         add(drawPanel);
         add(jbStart);

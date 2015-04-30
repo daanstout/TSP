@@ -80,8 +80,9 @@ public class Main {
         Artikel A3 = new Artikel(3, 1, "Mobiel", 1, 2, 3);
         Artikel A4 = new Artikel(4, 1, "Mobiel", 3, 3, 4);
         Artikel A5 = new Artikel(5, 1, "Mobiel", 5, 5, 5);
+        Artikel A6 = new Artikel(6, 1, "Mobiel", 4, 4, 6);
         
-        System.out.println(vak1.distanceTo(vak9));
+//        System.out.println(vak1.distanceTo(vak9));
         
         ArrayList<Vak> vakLijst = new ArrayList<>();
         
@@ -92,27 +93,28 @@ public class Main {
         
         Klant w = new Klant("Daan", "Stout", "Schellerpad 48", "8017 AM", "Zwolle");
         
-        Order q = new Order(2, w);
+        Order order = new Order(2, w);
         
         
-        q.addProduct(A3);
-        q.addProduct(A4);
-        q.addProduct(A5);
-        q.addProduct(A1);
-        q.addProduct(A2);
+        order.addProduct(A3);
+        order.addProduct(A4);
+        order.addProduct(A5);
+        order.addProduct(A1);
+        order.addProduct(A2);
+        order.addProduct(A6);
         
-        q.nearestNeighboor();
-        System.out.println(q.getProductLijst());
+        order.nearestNeighboor();
+        System.out.println(order.getProductLijst());
         
-        System.out.println("\n");
-        System.out.println("Volledige enumeratie :\n");
-        
-        Scherm scherm = new Scherm(mag);
+//        System.out.println("\n");
+//        System.out.println("Volledige enumeratie :\n");
+//        
+        Scherm scherm = new Scherm(mag, order);
         
         Insets insets = scherm.getInsets();
         scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);
         
-        permute(Arrays.asList(vak4, vak14, vak21), 0);
+//        permute(Arrays.asList(vak4, vak14, vak21), 0);
     }
 
 //    public static ArrayList VaktoInt(ArrayList<Vak> k){
