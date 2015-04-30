@@ -50,13 +50,20 @@ public class Tekenpanel extends JPanel{
         int count = 0;
         
         while(count<grootte){
-            g2.setColor(Color.RED);
-            g2.setStroke(new BasicStroke(2));
-            
             int artikel1X = lijst.get(count).getX()-1;
             int artikel1Y = lijst.get(count).getY()-1;
             int artikel2X = lijst.get(count+1).getX()-1;
             int artikel2Y = lijst.get(count+1).getY()-1;
+            
+            g2.setColor(Color.BLACK);
+            
+            g2.fillOval(5 + (38 + (76*artikel1X)), 5 + (76*5) - (38+(76*artikel1Y)), 10, 10);
+            g2.fillOval(5 + (38 + (76*artikel2X)), 5 + (76*5) - (38+(76*artikel2Y)), 10, 10);
+            
+            
+            
+            g2.setColor(Color.RED);
+            g2.setStroke(new BasicStroke(2));
             
             g2.drawLine(10 + (38 + (76*artikel1X)), 10 + (76*5) - (38+(76*artikel1Y)), 10 + (38 + (76*artikel2X)), 10 + (76*5) - (38+(76*artikel2Y)));
             
