@@ -15,15 +15,15 @@ import java.util.List;
  * @author Coolbone
  */
 public class Permute {
-    private static ArrayList<ArrayList> finalLijst;
-    private static ArrayList<ArrayList> semiFinalLijst;
-    private static ArrayList<List> vakLijst;
-    private static ArrayList<Integer> integerLijst;
+//    private static ArrayList<ArrayList> finalLijst;
+//    private static ArrayList<ArrayList> semiFinalLijst;
+//    private static ArrayList<List> vakLijst;
+//    private static ArrayList<Integer> integerLijst;
    
     static void permute(List<Vak> arr, int k){
-        finalLijst = new ArrayList<>();
-        vakLijst = new ArrayList<>();
-        integerLijst = new ArrayList<>();
+//        finalLijst = new ArrayList<>();
+//        vakLijst = new ArrayList<>();
+//        integerLijst = new ArrayList<>();
         
         for(int i = k; i < arr.size(); i++){
             Collections.swap(arr, i, k);
@@ -49,22 +49,23 @@ public class Permute {
                     if (count == arr.size()){
                         totDistance += vak2.distanceTo(startPunt);
                     }
-                    vakLijst.add(arr);
-                    integerLijst.add(totDistance);
-                    semiFinalLijst.add(vakLijst);
-                    semiFinalLijst.add(integerLijst);
-                    finalLijst.add(semiFinalLijst);
+
                 }
-                
+                System.out.println(arr.toString() + "\n" + totDistance);
+//                    vakLijst.add(arr);
+//                    integerLijst.add(totDistance);
+//                    semiFinalLijst.add(vakLijst);
+//                    semiFinalLijst.add(integerLijst);
+//                    finalLijst.add(semiFinalLijst);
                 
         }
     }
     
-    public static void printen(){
-        for(int i = 0; i < finalLijst.size(); i++) {   
-            System.out.print(finalLijst.get(i));
-        } 
-    }
+//    public static void printen(){
+//        for(int i = 0; i < finalLijst.size(); i++) {   
+//            System.out.print(finalLijst.get(i));
+//        } 
+//    }
     
 //    public static ArrayList VaktoInt(ArrayList<Vak> k){
 //        ArrayList<Integer> a = new ArrayList<>();
@@ -105,6 +106,6 @@ public class Permute {
         Vak vak25 = new Vak(5, 5, 25);
         
         permute(Arrays.asList(vak4, vak14, vak21), 0);
-        printen();
+//        printen();
     }
 }
