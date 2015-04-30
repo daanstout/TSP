@@ -12,7 +12,6 @@ public class Tekenpanel extends JPanel{
         this.magazijn = magazijn;
         
         setPreferredSize(new Dimension(400,400));
-//        setMaximumSize(new Dimension(200,200));
         setMinimumSize(new Dimension(200,200));
     }
     
