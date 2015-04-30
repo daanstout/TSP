@@ -7,6 +7,15 @@ import javax.swing.JPanel;
 
 public class Tekenpanel extends JPanel{
     private Magazijn magazijn;
+    public static final int PWIDTH = 400;
+    public static final int PHEIGHT = 400;
+    
+    private int xVak = 5;
+    private int yVak = 5;
+    private int boxWidth;
+    private int boxHeight;
+    private int padding = 10;
+    private int lineHeight = 12;
     
     public Tekenpanel(Magazijn magazijn){
         this.magazijn = magazijn;
@@ -14,13 +23,20 @@ public class Tekenpanel extends JPanel{
         setPreferredSize(new Dimension(400,400));
 //        setMaximumSize(new Dimension(200,200));
         setMinimumSize(new Dimension(200,200));
+        
+        boxWidth = (PWIDTH - (2 * padding)) / xVak;
+        boxHeight = (PHEIGHT - (2 * padding)) / yVak;
+        
     }
     
     public void paintComponent (Graphics g){
         super.paintComponent(g);
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, 10, 10);
-        g.drawRect(0, 0, 398, 298);
-        g.fillRect(0, 190, 10, 10);
+        
+        g.setColor(Color.BLACK);
+        for(int x = 0; x < xVak; x++){
+            for(int y = 0; y < yVak; y++){
+                g.drawRect(x * boxWidth + padding, y * boxHeight + padding, boxWidth, boxHeight);
+            }
+        }
     }
 }
