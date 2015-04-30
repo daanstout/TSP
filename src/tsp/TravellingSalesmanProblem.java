@@ -41,4 +41,44 @@ import java.util.List;
         }
         return a;
     }
+    
+    public ArrayList<Artikel> nearestNeighboor(ArrayList<Artikel> productLijst){
+        ArrayList<Artikel> artikelLijst = new ArrayList<>();
+        int counter = 0;
+        while(counter < productLijst.size()){
+            Artikel startArtikel = productLijst.get(counter);
+            if(startArtikel.getX() == 1 &&startArtikel.getY() == 1){
+                artikelLijst.add(startArtikel);
+                productLijst.remove(startArtikel);
+            }
+            counter++;
+        }
+        
+        if(artikelLijst.isEmpty()){
+            Artikel A1 = new Artikel(1, 1, null, 1, 1, 1);
+            artikelLijst.add(A1);
+        }
+        
+        while(!productLijst.isEmpty()){
+            int artikelToAdd = 0;
+            int afstandTocheck = 100;
+            counter = 0;
+            while(counter < productLijst.size()){
+                int afstand = artikelLijst.get(artikelLijst.size()-1).distanceTo(productLijst.get(counter));
+                if(afstand <= afstandTocheck){
+                    afstandTocheck = afstand;
+                    artikelToAdd = counter;
+                }
+                counter++;
+            }
+            artikelLijst.add(productLijst.get(artikelToAdd));
+            productLijst.remove(artikelToAdd);
+        }
+        
+        if(artikelLijst.get(0).getNaam() == null){
+            artikelLijst.remove(0);
+        }
+        
+        return artikelLijst;
+    }
 }
