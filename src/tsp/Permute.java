@@ -16,7 +16,6 @@ import java.util.List;
  */
 public class Permute {
 //    private static ArrayList<ArrayList> finalLijst;
-//    private static ArrayList<ArrayList> semiFinalLijst;
 //    private static ArrayList<List> vakLijst;
 //    private static ArrayList<Integer> integerLijst;
    
@@ -24,6 +23,7 @@ public class Permute {
 //        finalLijst = new ArrayList<>();
 //        vakLijst = new ArrayList<>();
 //        integerLijst = new ArrayList<>();
+      
         
         for(int i = k; i < arr.size(); i++){
             Collections.swap(arr, i, k);
@@ -50,13 +50,15 @@ public class Permute {
                         totDistance += vak2.distanceTo(startPunt);
                     }
 
-                }
-                System.out.println(arr.toString() + "\n" + totDistance);
 //                    vakLijst.add(arr);
 //                    integerLijst.add(totDistance);
-//                    semiFinalLijst.add(vakLijst);
-//                    semiFinalLijst.add(integerLijst);
-//                    finalLijst.add(semiFinalLijst);
+                }
+                System.out.println(arr.toString() + "\n" + totDistance);
+//                finalLijst.add(vakLijst);
+//                finalLijst.add(integerLijst);
+//                    
+                    
+               
                 
         }
     }
