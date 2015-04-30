@@ -108,7 +108,7 @@ public class Scherm extends JFrame implements ActionListener {
         JLabel test = new JLabel("test");
         
         drawPanel.setBounds(insets.left+450, insets.top+100, 400, 400);
-        drawPanel.add(tSimulator);
+//        drawPanel.add(tSimulator);
         
         add(drawPanel);
         add(jbStart);
