@@ -19,9 +19,11 @@ public class Tekenpanel extends JPanel{
     private int boxHeight;
     private int padding = 10;
     private int lineHeight = 12;
+    private String algoritme;
     
-    public Tekenpanel(Order order){
+    public Tekenpanel(Order order, String algoritme){
         this.order = order;
+        this.algoritme = algoritme;
         
         setPreferredSize(new Dimension(400,400));
         setMinimumSize(new Dimension(200,200));
@@ -44,29 +46,31 @@ public class Tekenpanel extends JPanel{
             }
         }
         
-        ArrayList<Artikel> lijst = order.getProductLijst();
-        int grootte = lijst.size()-1;
-        int count = 0;
+        if(algoritme != null){
+            ArrayList<Artikel> lijst = order.getProductLijst();
+            int grootte = lijst.size()-1;
+            int count = 0;
 
-        while(count<grootte){
-            int artikel1X = lijst.get(count).getX()-1;
-            int artikel1Y = lijst.get(count).getY()-1;
-            int artikel2X = lijst.get(count+1).getX()-1;
-            int artikel2Y = lijst.get(count+1).getY()-1;
-            
-            g2.setColor(Color.BLACK);
+            while(count<grootte){
+                int artikel1X = lijst.get(count).getX()-1;
+                int artikel1Y = lijst.get(count).getY()-1;
+                int artikel2X = lijst.get(count+1).getX()-1;
+                int artikel2Y = lijst.get(count+1).getY()-1;
 
-            g2.fillOval(5 + (38 + (76*artikel1X)), 5 + (76*5) - (38+(76*artikel1Y)), 10, 10);
-            g2.fillOval(5 + (38 + (76*artikel2X)), 5 + (76*5) - (38+(76*artikel2Y)), 10, 10);
+                g2.setColor(Color.BLACK);
+
+                g2.fillOval(5 + (38 + (76*artikel1X)), 5 + (76*5) - (38+(76*artikel1Y)), 10, 10);
+                g2.fillOval(5 + (38 + (76*artikel2X)), 5 + (76*5) - (38+(76*artikel2Y)), 10, 10);
 
 
 
-            g2.setColor(Color.RED);
-            g2.setStroke(new BasicStroke(2));
+                g2.setColor(Color.RED);
+                g2.setStroke(new BasicStroke(2));
 
-            g2.drawLine(10 + (38 + (76*artikel1X)), 10 + (76*5) - (38+(76*artikel1Y)), 10 + (38 + (76*artikel2X)), 10 + (76*5) - (38+(76*artikel2Y)));
+                g2.drawLine(10 + (38 + (76*artikel1X)), 10 + (76*5) - (38+(76*artikel1Y)), 10 + (38 + (76*artikel2X)), 10 + (76*5) - (38+(76*artikel2Y)));
 
-            count++;
+                count++;
+            }
         }
     }
 }

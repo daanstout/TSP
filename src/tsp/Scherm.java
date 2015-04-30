@@ -20,7 +20,7 @@ public class Scherm extends JFrame implements ActionListener {
     private JLabel jlResultaat;
     private JLabel jlAlgoritme;
     private JLabel jlOrdernr;
-    private JComboBox jcAlgoritme; 
+    private JComboBox jcAlgoritme;
     private JTable tResultaat;
     private JLabel jlNummer;
     private TravellingSalesmanProblem tsp;
@@ -34,17 +34,17 @@ public class Scherm extends JFrame implements ActionListener {
     private Magazijn magazijn;
     private Order order;
     private String algoritme;
-    
-    public Scherm(Magazijn magazijn, Order order, TravellingSalesmanProblem tsp){
+
+    public Scherm(Magazijn magazijn, Order order, TravellingSalesmanProblem tsp) {
         this.algoritme = null;
         this.tsp = tsp;
         this.magazijn = magazijn;
         this.order = order;
         this.setTitle("TSP");
-        this.setSize(800,600);
+        this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        
+
         Algoritmes = new ArrayList<>();
         Afstanden = new ArrayList<>();
         ALTijd = new ArrayList<>();
@@ -58,59 +58,57 @@ public class Scherm extends JFrame implements ActionListener {
         jlOrdernr = new JLabel("Order nummer");
         jcAlgoritme = new JComboBox();
         jlNummer = new JLabel(String.valueOf(order.getOrderNummer()));
-        
+
         Font header = new Font("Arial", Font.BOLD, 25);
         Font defaultFont = new Font("Arial", Font.PLAIN, 14);
-        
+
         Algoritmes.add("Volledige enumeratie");
         Algoritmes.add("Simpel gretig algoritme");
         Algoritmes.add("Minimal spanning tree");
-        Afstanden.add("25 DM");
-        Afstanden.add("30 DM");
-        Afstanden.add("27 DM");
+        Afstanden.add("25");
+        Afstanden.add("30");
+        Afstanden.add("27");
         ALTijd.add("5 sec");
         ALTijd.add("7 sec");
         ALTijd.add("6 sec");
-        
+
         Insets insets = this.getInsets();
-        
-        ArrayList<String> wachtrijHeading = new ArrayList<String>(Arrays.asList("Algoritme", "Afstand", "Tijd"));
+
+        ArrayList<String> wachtrijHeading = new ArrayList<String>(Arrays.asList("Algoritme", "Afstand (CM)", "Tijd"));
         tResultaat = new JTable(new PakketTableModel(Algoritmes, Afstanden, ALTijd, wachtrijHeading));
         getContentPane().add(new JScrollPane(tResultaat), BorderLayout.CENTER);
         tResultaat.setPreferredSize(new Dimension(275, 422));
         tResultaat.setFont(defaultFont);
         tResultaat.setRowHeight(20);
-        
 
         DefaultTableCellRenderer wachtrijRenderer = new DefaultTableCellRenderer();
         wachtrijRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         tResultaat.getColumnModel().getColumn(0).setCellRenderer(wachtrijRenderer);
         tResultaat.getTableHeader().setReorderingAllowed(false);
         tResultaat.getTableHeader().setFont(defaultFont);
-        
+
         tResultaat.getColumnModel().getColumn(0).setPreferredWidth(100);
         tResultaat.getColumnModel().getColumn(1).setPreferredWidth(15);
         tResultaat.getColumnModel().getColumn(2).setPreferredWidth(10);
-        
+
         JPanel j = new JPanel(new BorderLayout());
         j.add(tResultaat.getTableHeader(), BorderLayout.PAGE_START);
         j.add(tResultaat, BorderLayout.CENTER);
         j.setBorder(BorderFactory.createLineBorder(Color.black));
         j.add(new JScrollPane(tResultaat));
-        j.setPreferredSize(new Dimension(380,150));
+        j.setPreferredSize(new Dimension(380, 150));
         add(j);
-        
-        
+
         size = j.getPreferredSize();
-        j.setBounds(insets.left+30, insets.top+400, size.width, size.height);
-        
-        tSimulator = new Tekenpanel(this.order);
-        
+        j.setBounds(insets.left + 30, insets.top + 400, size.width, size.height);
+
+        tSimulator = new Tekenpanel(this.order, this.algoritme);
+
         JPanel drawPanel = new JPanel();
-        
-        drawPanel.setBounds(insets.left+450, insets.top+100, 400, 400);
+
+        drawPanel.setBounds(insets.left + 450, insets.top + 100, 400, 400);
         drawPanel.add(tSimulator);
-        
+
         add(drawPanel);
         add(jbStart);
         add(jbStop);
@@ -120,128 +118,133 @@ public class Scherm extends JFrame implements ActionListener {
         add(jlAlgoritme);
         add(jlOrdernr);
         add(jlNummer);
-        
+
         jlSimulatie.setFont(header);
         jlResultaat.setFont(header);
         jlAlgoritme.setFont(defaultFont);
         jlOrdernr.setFont(defaultFont);
         jlNummer.setFont(defaultFont);
-        
+
         size = jbStart.getPreferredSize();
-        jbStart.setBounds(insets.left+30, insets.top+300, size.width, size.height);
-        
+        jbStart.setBounds(insets.left + 30, insets.top + 300, size.width, size.height);
+
         size = jbStop.getPreferredSize();
-        jbStop.setBounds(insets.left+180, insets.top+300, size.width, size.height);
-        
+        jbStop.setBounds(insets.left + 180, insets.top + 300, size.width, size.height);
+
         size = jbImport.getPreferredSize();
-        jbImport.setBounds(insets.left+30, insets.top+125, size.width, size.height);
-        
+        jbImport.setBounds(insets.left + 30, insets.top + 125, size.width, size.height);
+
         size = jlSimulatie.getPreferredSize();
-        jlSimulatie.setBounds(insets.left+450, insets.top+45, size.width, size.height);
-        
+        jlSimulatie.setBounds(insets.left + 450, insets.top + 45, size.width, size.height);
+
         size = jlResultaat.getPreferredSize();
-        jlResultaat.setBounds(insets.left+30, insets.top+350, size.width, size.height);
-        
+        jlResultaat.setBounds(insets.left + 30, insets.top + 350, size.width, size.height);
+
         size = jlAlgoritme.getPreferredSize();
-        jlAlgoritme.setBounds(insets.left+30, insets.top+50, size.width, size.height);
-        
+        jlAlgoritme.setBounds(insets.left + 30, insets.top + 50, size.width, size.height);
+
         size = jlOrdernr.getPreferredSize();
-        jlOrdernr.setBounds(insets.left+30, insets.top+220, size.width, size.height);
-        
+        jlOrdernr.setBounds(insets.left + 30, insets.top + 220, size.width, size.height);
+
         size = jlNummer.getPreferredSize();
-        jlNummer.setBounds(insets.left+180, insets.top+220, size.width, size.height);
-        
+        jlNummer.setBounds(insets.left + 180, insets.top + 220, size.width, size.height);
+
         jcAlgoritme.addItem("Kies algoritme");
         jcAlgoritme.addItem("Volledige enumeratie");
         jcAlgoritme.addItem("Simpel gretig algoritme");
         jcAlgoritme.addItem("Minimal spanning tree");
-        
+
         JPanel a = new JPanel(new FlowLayout());
         a.add(jcAlgoritme);
         a.setBorder(BorderFactory.createLineBorder(Color.black));
-        
+
         JPanel fieldPanel = new JPanel(new GridLayout(1, 1)); // 2 rows 1 column
         add(fieldPanel, BorderLayout.CENTER);
-        
+
         fieldPanel.add(jcAlgoritme);
-        fieldPanel.setPreferredSize(new Dimension(180,20));
-        
+        fieldPanel.setPreferredSize(new Dimension(180, 20));
+
         size = fieldPanel.getPreferredSize();
-        fieldPanel.setBounds(insets.left+180, insets.top+50, size.width, size.height);
-        
+        fieldPanel.setBounds(insets.left + 180, insets.top + 50, size.width, size.height);
+
         add(a);
-        
-        
-        
-        
-        
+
         this.jbStart.addActionListener(this);
         this.jbStop.addActionListener(this);
         this.jbImport.addActionListener(this);
         this.jcAlgoritme.addActionListener(this);
-        
+
         revalidate();
         pack();
         this.setVisible(true);
-        
+
         t = new Timer(100, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dit loopt in een loop, programmeer hier je programmma.
-                
+                if(algoritme != null){
+                    tSimulator = new Tekenpanel(order, algoritme);
+                    drawPanel.remove(0);
+                    drawPanel.add(tSimulator);
+                    if (algoritme == "Volledige enumeratie") {
+                        System.out.println(algoritme);
+                    } else if (algoritme == "Simpel gretig algoritme") {
+                        System.out.println(algoritme);
+                        order.setProductLijst(tsp.nearestNeighboor(order.getProductLijst()));
+                    } else if (algoritme == "Minimal spanning tree") {
+                        System.out.println(algoritme);
+                    }
+                    
+                    revalidate();
+                    repaint();
+                    t.stop();
+                }else{
+                    t.stop();
+                }
             }
         });
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        if(e.getSource() == jbStart){
+
+        if (e.getSource() == jbStart) {
             t.start();
-            if(this.algoritme == "Volledige enumeratie"){
-                System.out.println(this.algoritme);
-            }else if(this.algoritme == "Simpel gretig algoritme"){
-                System.out.println(this.algoritme);
-                order.setProductLijst(tsp.nearestNeighboor(order.getProductLijst()));
-            }else if(this.algoritme == "Minimal spanning tree"){
-                System.out.println(this.algoritme);
-            }
-        }else if(e.getSource() == jbStop){
+        } else if (e.getSource() == jbStop) {
             System.out.println("Stop");
-        }else if(e.getSource() == jbImport){
+        } else if (e.getSource() == jbImport) {
             System.out.println("Import");
-        }else if(e.getSource() == jcAlgoritme){
+        } else if (e.getSource() == jcAlgoritme){
             JComboBox comboBox = (JComboBox) e.getSource();
-               
-                Object selected = comboBox.getSelectedItem();
-                if(selected.toString().equals("Volledige enumeratie")){
-                    this.algoritme = "Volledige enumeratie";
-                    
-                    if (count == 0){
-                        comboBox.removeItemAt(0);
-                        count ++;
-                    }
+
+            Object selected = comboBox.getSelectedItem();
+            if (selected.toString().equals("Volledige enumeratie")) {
+                algoritme = "Volledige enumeratie";
+
+                if (count == 0) {
+                    comboBox.removeItemAt(0);
+                    count++;
                 }
-                else if(selected.toString().equals("Simpel gretig algoritme")){
-                    this.algoritme = "Simpel gretig algoritme";
-                    
-                    if (count == 0){
-                        comboBox.removeItemAt(0);
-                        count ++;
-                    }
+            } else if (selected.toString().equals("Simpel gretig algoritme")) {
+                algoritme = "Simpel gretig algoritme";
+
+                if (count == 0) {
+                    comboBox.removeItemAt(0);
+                    count++;
                 }
-                else if(selected.toString().equals("Minimal spanning tree")){
-                    this.algoritme = "Minimal spanning tree";
-                    
-                    if (count == 0){
-                        comboBox.removeItemAt(0);
-                        count ++;
-                    }
+            } else if (selected.toString().equals("Minimal spanning tree")) {
+                algoritme = "Minimal spanning tree";
+
+                if (count == 0) {
+                    comboBox.removeItemAt(0);
+                    count++;
                 }
+            }
         }
+
         revalidate();
+
         repaint();
     }
-    
+
 }
