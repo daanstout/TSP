@@ -15,16 +15,12 @@ import java.util.List;
  * @author Coolbone
  */
 public class Permute {
-//    private static ArrayList<ArrayList> finalLijst;
-//    private static ArrayList<List> vakLijst;
-//    private static ArrayList<Integer> integerLijst;
+    private static ArrayList<List> finalLijst;
+    private static ArrayList<List> vakLijst;
+    private static ArrayList<Integer> integerLijst;
    
     static void permute(List<Vak> arr, int k){
-//        finalLijst = new ArrayList<>();
-//        vakLijst = new ArrayList<>();
-//        integerLijst = new ArrayList<>();
       
-        
         for(int i = k; i < arr.size(); i++){
             Collections.swap(arr, i, k);
             permute(arr, k+1);
@@ -40,7 +36,11 @@ public class Permute {
                 totDistance += startPunt.distanceTo(arr.get(0));
                 for (int j = 0; j < arr.size() - 1; j++) {
                     
-                    Vak vak = arr.get(j);
+                    finalLijst = new ArrayList<>();
+                    vakLijst = new ArrayList<>();
+                    integerLijst = new ArrayList<>();
+                    
+                    Vak vak = arr.get(j);          
                     Vak vak2 = arr.get(j + 1);
                     count++;
                     totDistance += vak.distanceTo(vak2);
@@ -50,14 +50,16 @@ public class Permute {
                         totDistance += vak2.distanceTo(startPunt);
                     }
 
-//                    vakLijst.add(arr);
-//                    integerLijst.add(totDistance);
+                    vakLijst.add(arr);
+                    integerLijst.add(totDistance);
                 }
-                System.out.println(arr.toString() + "\n" + totDistance);
-//                finalLijst.add(vakLijst);
-//                finalLijst.add(integerLijst);
-//                    
-                    
+               
+                
+//                System.out.println(arr.toString() + " - " + totDistance);
+                finalLijst.add(vakLijst);
+                finalLijst.add(integerLijst);
+                
+                System.out.println(finalLijst);
                
                 
         }
