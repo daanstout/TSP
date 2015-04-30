@@ -95,6 +95,7 @@ public class Main {
         
         Order order = new Order(2, w);
         
+        TravellingSalesmanProblem TSP = new TravellingSalesmanProblem(mag);
         
         order.addProduct(A3);
         order.addProduct(A4);
@@ -103,7 +104,8 @@ public class Main {
         order.addProduct(A2);
         order.addProduct(A6);
         
-        order.nearestNeighboor();
+        order.setProductLijst(TSP.nearestNeighboor(order.getProductLijst()));
+        
         System.out.println(order.getProductLijst());
         
 //        System.out.println("\n");
