@@ -95,7 +95,7 @@ public class Main {
         
         Order order = new Order(2, w);
         
-        TravellingSalesmanProblem TSP = new TravellingSalesmanProblem(mag);
+        TravellingSalesmanProblem tsp = new TravellingSalesmanProblem(mag);
         
         order.addProduct(A3);
         order.addProduct(A4);
@@ -104,14 +104,12 @@ public class Main {
         order.addProduct(A2);
         order.addProduct(A6);
         
-        order.setProductLijst(TSP.nearestNeighboor(order.getProductLijst()));
-        
         System.out.println(order.getProductLijst());
         
 //        System.out.println("\n");
 //        System.out.println("Volledige enumeratie :\n");
 //        
-        Scherm scherm = new Scherm(mag, order);
+        Scherm scherm = new Scherm(mag, order, tsp);
         
         Insets insets = scherm.getInsets();
         scherm.setSize(900 + insets.left + insets.right, 600 + insets.top + insets.bottom);

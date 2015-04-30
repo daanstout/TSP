@@ -28,6 +28,10 @@ public class Order {
         productLijst.add(a);
     }
     
+    public int getOrderNummer(){
+        return orderNummer;
+    }
+    
     public ArrayList getProductLijst(){
         return productLijst;
     }

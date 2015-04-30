@@ -33,8 +33,11 @@ public class Scherm extends JFrame implements ActionListener {
     private Tekenpanel tSimulator;
     private Magazijn magazijn;
     private Order order;
+    private String algoritme;
     
-    public Scherm(Magazijn magazijn, Order order){
+    public Scherm(Magazijn magazijn, Order order, TravellingSalesmanProblem tsp){
+        this.algoritme = null;
+        this.tsp = tsp;
         this.magazijn = magazijn;
         this.order = order;
         this.setTitle("TSP");
@@ -54,7 +57,7 @@ public class Scherm extends JFrame implements ActionListener {
         jlAlgoritme = new JLabel("Algoritme");
         jlOrdernr = new JLabel("Order nummer");
         jcAlgoritme = new JComboBox();
-        jlNummer = new JLabel("nummer");
+        jlNummer = new JLabel(String.valueOf(order.getOrderNummer()));
         
         Font header = new Font("Arial", Font.BOLD, 25);
         Font defaultFont = new Font("Arial", Font.PLAIN, 14);
@@ -191,54 +194,54 @@ public class Scherm extends JFrame implements ActionListener {
         });
     }
     
-    
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if (e.getSource() == jbStart) {
+        if(e.getSource() == jbStart){
             t.start();
-            System.out.println("Start");
-        } else if (e.getSource() == jbStop) {
+            if(this.algoritme == "Volledige enumeratie"){
+                System.out.println(this.algoritme);
+            }else if(this.algoritme == "Simpel gretig algoritme"){
+                System.out.println(this.algoritme);
+                order.setProductLijst(tsp.nearestNeighboor(order.getProductLijst()));
+            }else if(this.algoritme == "Minimal spanning tree"){
+                System.out.println(this.algoritme);
+            }
+        }else if(e.getSource() == jbStop){
             System.out.println("Stop");
-        }else if (e.getSource() == jbImport) {
+        }else if(e.getSource() == jbImport){
             System.out.println("Import");
-        } else if(e.getSource() == jcAlgoritme){
+        }else if(e.getSource() == jcAlgoritme){
             JComboBox comboBox = (JComboBox) e.getSource();
                
                 Object selected = comboBox.getSelectedItem();
-                if(selected.toString().equals("Volledige enumeratie"))
-                {
-                    System.out.println("Volledige enumeratie");
-
-                    if (count == 0)
-                    {
-                        comboBox.removeItemAt(0);
-                        count ++;
-                    }
+                if(selected.toString().equals("Volledige enumeratie")){
+                    this.algoritme = "Volledige enumeratie";
                     
-                }
-                else if(selected.toString().equals("Simpel gretig algoritme"))
-                {
-                    System.out.println("Simpel gretig algoritme");
-                    if (count == 0)
-                    {
+                    if (count == 0){
                         comboBox.removeItemAt(0);
                         count ++;
                     }
                 }
-                else if(selected.toString().equals("Minimal spanning tree"))
-                {
-                    System.out.println("Minimal spanning tree");
-                    if (count == 0)
-                    {
+                else if(selected.toString().equals("Simpel gretig algoritme")){
+                    this.algoritme = "Simpel gretig algoritme";
+                    
+                    if (count == 0){
+                        comboBox.removeItemAt(0);
+                        count ++;
+                    }
+                }
+                else if(selected.toString().equals("Minimal spanning tree")){
+                    this.algoritme = "Minimal spanning tree";
+                    
+                    if (count == 0){
                         comboBox.removeItemAt(0);
                         count ++;
                     }
                 }
         }
-
-        
-
+        revalidate();
+        repaint();
     }
     
 }
