@@ -188,11 +188,13 @@ public class Scherm extends JFrame implements ActionListener {
                     drawPanel.add(tSimulator);
                     if (algoritme == "Volledige enumeratie") {
                         System.out.println(algoritme);
+//                        order.setProductLijst(tsp.volledigeEnumeratie(order.getProductLijst()));
                     } else if (algoritme == "Simpel gretig algoritme") {
                         System.out.println(algoritme);
                         order.setProductLijst(tsp.nearestNeighboor(order.getProductLijst()));
                     } else if (algoritme == "Minimal spanning tree") {
                         System.out.println(algoritme);
+//                        order.setProductLijst(tsp.minimalSpanningTree(order.getProductLijst()));
                     }
                     
                     revalidate();

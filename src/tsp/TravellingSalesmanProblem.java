@@ -42,6 +42,23 @@ import java.util.List;
         return a;
     }
     
+    
+    public ArrayList<Artikel> minimalSpanningTree(ArrayList<Artikel> productLijst){
+        ArrayList<Artikel> artikelLijst = new ArrayList<>();
+        
+        // code
+        
+        return artikelLijst;
+    }
+    
+    public ArrayList<Artikel> volledigeEnumeratie(ArrayList<Artikel> productLijst){
+        ArrayList<Artikel> artikelLijst = new ArrayList<>();
+        
+        // code
+        
+        return artikelLijst;
+    }
+    
     public ArrayList<Artikel> nearestNeighboor(ArrayList<Artikel> productLijst){
         ArrayList<Artikel> artikelLijst = new ArrayList<>();
         int counter = 0;
