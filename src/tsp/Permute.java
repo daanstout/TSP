@@ -58,18 +58,12 @@ public class Permute {
 //                System.out.println(arr.toString() + " - " + totDistance);
                 finalLijst.add(vakLijst);
                 finalLijst.add(integerLijst);
-                
+
                 System.out.println(finalLijst);
                
                 
         }
     }
-    
-//    public static void printen(){
-//        for(int i = 0; i < finalLijst.size(); i++) {   
-//            System.out.print(finalLijst.get(i));
-//        } 
-//    }
     
 //    public static ArrayList VaktoInt(ArrayList<Vak> k){
 //        ArrayList<Integer> a = new ArrayList<>();
@@ -109,7 +103,7 @@ public class Permute {
         Vak vak24 = new Vak(4, 5, 24);
         Vak vak25 = new Vak(5, 5, 25);
         
-        permute(Arrays.asList(vak4, vak14, vak21), 0);
-//        printen();
+        
+        permute(Arrays.asList(vak4, vak14, vak21, vak25, vak7), 0);
     }
 }
