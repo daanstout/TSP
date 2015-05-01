@@ -106,9 +106,6 @@ public class Main {
         
         System.out.println(order.getProductLijst());
         
-//        System.out.println("\n");
-//        System.out.println("Volledige enumeratie :\n");
-//        
         Scherm scherm = new Scherm(mag, order, tsp);
         
         Insets insets = scherm.getInsets();
@@ -116,37 +113,4 @@ public class Main {
         
 //        permute(Arrays.asList(vak4, vak14, vak21), 0);
     }
-
-//    public static ArrayList VaktoInt(ArrayList<Vak> k){
-//        ArrayList<Integer> a = new ArrayList<>();
-//        
-//        for(Vak h : k){
-//            a.add(h.getNr());
-//        }
-//        
-//        return a;
-//    }
-//    
-//    public static ArrayList InttoVak(ArrayList<ArrayList<Integer>> k, Magazijn p){
-//        ArrayList<Vak> a = new ArrayList<>();
-//        
-//        for(ArrayList<Integer> h : k){
-//            for(Integer l : h){
-//                int i = 0;
-//                while(i<p.getAantalVakken()){
-//                    if(l == p.getVak(i).getNr()){
-//                        a.add(p.getVak(i));
-//                    }
-//                    i++;
-//                }
-//            }
-//            Integer q = h.get(0);
-//            Integer w = h.get(1);
-//            Integer e = h.get(2);
-//            
-//            Integer l = 0;
-//        }
-//        
-//        return a;
-//    }
 }

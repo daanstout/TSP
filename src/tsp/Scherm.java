@@ -24,8 +24,8 @@ public class Scherm extends JFrame implements ActionListener {
     private JTable tResultaat;
     private JLabel jlNummer;
     private TravellingSalesmanProblem tsp;
-    Dimension size;
-    int count = 0;
+    private Dimension size;
+    private int count = 0;
     private Timer t;
     private ArrayList<String> Algoritmes;
     private ArrayList<String> Afstanden;
@@ -194,7 +194,7 @@ public class Scherm extends JFrame implements ActionListener {
                         order.setProductLijst(tsp.nearestNeighboor(order.getProductLijst()));
                     } else if (algoritme == "Minimal spanning tree") {
                         System.out.println(algoritme);
-//                        order.setProductLijst(tsp.minimalSpanningTree(order.getProductLijst()));
+                        order.setProductLijst(tsp.minimalSpanningTree(order.getProductLijst()));
                     }
                     
                     revalidate();

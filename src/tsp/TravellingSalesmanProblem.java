@@ -45,9 +45,41 @@ import java.util.List;
     
     public ArrayList<Artikel> minimalSpanningTree(ArrayList<Artikel> productLijst){
         ArrayList<Artikel> artikelLijst = new ArrayList<>();
+        ArrayList<Integer> afstandLijst = new ArrayList<>();
+        int counter = 0;
+        int artikelCounter = 1;
         
-        // code
+        while(counter < productLijst.size()){
+            Artikel checkArtikel = productLijst.get(counter);
+            while(artikelCounter < productLijst.size()){
+                if(counter != artikelCounter){
+                    afstandLijst.add(checkArtikel.distanceTo(productLijst.get(artikelCounter)));
+                }
+                artikelCounter++;
+            }
+            counter++;
+            artikelCounter = counter;
+        }
         
+        Collections.sort(afstandLijst);
+        counter = 0;
+        artikelCounter = 1;
+        int afstandCounter = 0;
+        boolean continueWhile;
+        
+        while(afstandCounter < afstandLijst.size()){
+            continueWhile = true;
+            Artikel checkArtikel = productLijst.get(counter);
+            while(artikelCounter < productLijst.size() && continueWhile){
+                if(counter != artikelCounter){
+                    if(afstandLijst.get(counter) == checkArtikel.distanceTo(productLijst.get(artikelCounter))){
+                        continueWhile = false;
+                    }
+                }
+            }
+        }
+        
+        System.out.println(afstandLijst);
         return artikelLijst;
     }
     
