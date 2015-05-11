@@ -47,7 +47,7 @@ public class Tekenpanel extends JPanel{
         }
         
         if(algoritme != null){
-            ArrayList<Artikel> lijst = order.getProductLijst();
+            ArrayList<Artikel> lijst = order.getAlgoritmeLijst();
             int grootte = lijst.size()-1;
             int count = 0;
 

@@ -17,15 +17,21 @@ public class Order {
     private int orderNummer;
     private ArrayList<Artikel> productLijst;
     private Klant klant;
+    private ArrayList<Artikel> algoritmeLijst;
     
     public Order(int orderNummer, Klant klant){
         this.orderNummer = orderNummer;
         this.klant = klant;
         productLijst = new ArrayList<>();
+        algoritmeLijst = new ArrayList<>();
     }
     
     public void addProduct(Artikel a){
         productLijst.add(a);
+    }
+    
+    public ArrayList getAlgoritmeLijst(){
+        return algoritmeLijst;
     }
     
     public int getOrderNummer(){
@@ -36,8 +42,8 @@ public class Order {
         return productLijst;
     }
     
-    protected void setProductLijst(ArrayList<Artikel> productlijst){
-        this.productLijst = productlijst;
+    protected void setAlgoritmeLijst(ArrayList<Artikel> productlijst){
+        this.algoritmeLijst = productlijst;
     }
     
     public void importXml(){

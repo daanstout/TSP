@@ -64,7 +64,7 @@ public class Scherm extends JFrame implements ActionListener {
 
         Algoritmes.add("Volledige enumeratie");
         Algoritmes.add("Simpel gretig algoritme");
-        Algoritmes.add("Minimal spanning tree");
+        Algoritmes.add("Volgorde van order");
         Afstanden.add("25");
         Afstanden.add("30");
         Afstanden.add("27");
@@ -152,7 +152,7 @@ public class Scherm extends JFrame implements ActionListener {
         jcAlgoritme.addItem("Kies algoritme");
         jcAlgoritme.addItem("Volledige enumeratie");
         jcAlgoritme.addItem("Simpel gretig algoritme");
-        jcAlgoritme.addItem("Minimal spanning tree");
+        jcAlgoritme.addItem("Volgorde van order");
 
         JPanel a = new JPanel(new FlowLayout());
         a.add(jcAlgoritme);
@@ -191,10 +191,12 @@ public class Scherm extends JFrame implements ActionListener {
 //                        order.setProductLijst(tsp.volledigeEnumeratie(order.getProductLijst()));
                     } else if (algoritme == "Simpel gretig algoritme") {
                         System.out.println(algoritme);
-                        order.setProductLijst(tsp.nearestNeighboor(order.getProductLijst()));
-                    } else if (algoritme == "Minimal spanning tree") {
+                        order.setAlgoritmeLijst(tsp.nearestNeighboor(order.getProductLijst()));
+                        Afstanden.set(1, Integer.toString(tsp.getNearestNeighboorAfstand()));
+                    } else if (algoritme == "Volgorde van order") {
                         System.out.println(algoritme);
-                        order.setProductLijst(tsp.minimalSpanningTree(order.getProductLijst()));
+                        order.setAlgoritmeLijst(order.getProductLijst());
+                        Afstanden.set(2, Integer.toString(tsp.getOrderAfstand(order.getProductLijst())));
                     }
                     
                     revalidate();
@@ -234,8 +236,8 @@ public class Scherm extends JFrame implements ActionListener {
                     comboBox.removeItemAt(0);
                     count++;
                 }
-            } else if (selected.toString().equals("Minimal spanning tree")) {
-                algoritme = "Minimal spanning tree";
+            } else if (selected.toString().equals("Volgorde van order")) {
+                algoritme = "Volgorde van order";
 
                 if (count == 0) {
                     comboBox.removeItemAt(0);
