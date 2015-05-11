@@ -1,4 +1,3 @@
-
 package tsp;
 
 import java.util.ArrayList;
@@ -48,6 +47,8 @@ import java.util.List;
         ArrayList<Integer> afstandLijst = new ArrayList<>();
         int counter = 0;
         int artikelCounter = 1;
+        int aantalProducten = productLijst.size();
+        int aantalProductenInLijst = 0;
         
         while(counter < productLijst.size()){
             Artikel checkArtikel = productLijst.get(counter);
@@ -66,17 +67,39 @@ import java.util.List;
         artikelCounter = 1;
         int afstandCounter = 0;
         boolean continueWhile;
+        ArrayList<Artikel> producten = new ArrayList<>();
+        ArrayList<ArrayList> productenLijst = new ArrayList<>();
+        boolean addible = false;
         
-        while(afstandCounter < afstandLijst.size()){
+        while(afstandCounter < afstandLijst.size() && aantalProducten != aantalProductenInLijst){
             continueWhile = true;
-            Artikel checkArtikel = productLijst.get(counter);
+            counter = 1;
             while(artikelCounter < productLijst.size() && continueWhile){
+                Artikel checkArtikel = productLijst.get(counter);
                 if(counter != artikelCounter){
                     if(afstandLijst.get(counter) == checkArtikel.distanceTo(productLijst.get(artikelCounter))){
-                        continueWhile = false;
+                        if(productenLijst.size() <= 2){
+                            producten.add(checkArtikel);
+                            producten.add(productLijst.get(artikelCounter));
+                            productenLijst.add(producten);
+                            continueWhile = false;
+                        }else{
+                            for(ArrayList<Artikel> lijst : productenLijst){
+                                if(lijst.get(0) == checkArtikel){
+                                    for(ArrayList<Artikel> lijst2 : productenLijst){
+                                        if(lijst.get(1) == lijst2.get(0) || lijst.get(1) == lijst2.get(1)){
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
+                counter++;
+                artikelCounter++;
             }
+            afstandCounter++;
         }
         
         System.out.println(afstandLijst);
