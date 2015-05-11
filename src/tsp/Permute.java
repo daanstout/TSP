@@ -17,12 +17,28 @@ import java.util.List;
 public class Permute {
 
     public static ArrayList<List> finalLijst;
-    public static ArrayList<List> vakLijst;
+    public static ArrayList<List> vakLijst ;
     public static ArrayList<Integer> integerLijst;
     public static int kortsteDistance = 99;
     public static List<Vak> route;
+    
+    public static ArrayList<ArrayList<Vak>> finalRoute;
+    public static ArrayList<Integer> afstanden;
 
-    static void permute(List<Vak> arr, int k) {
+    public Permute() {
+        finalRoute = new ArrayList<>();
+        afstanden = new ArrayList<>();
+    }
+    
+    
+
+    static void permute(ArrayList<Vak> arr, int k) {
+        
+        if(finalRoute == null) {
+            System.out.println("ja kak");
+            finalRoute = new ArrayList<>();
+            afstanden = new ArrayList<>();
+        }
 
         for (int i = k; i < arr.size(); i++) {
             Collections.swap(arr, i, k);
@@ -56,18 +72,23 @@ public class Permute {
 
                 vakLijst.add(arr);
                 integerLijst.add(totDistance);
-            }
+                
+                
+//                afstanden.add(totDistance);
+//                finalRoute.add(arr);
+                
+            } 
+                afstanden.add(totDistance);
+//                finalRoute.add(arr);
 
-            if (totDistance < kortsteDistance) {
-                kortsteDistance = totDistance;
-                route = arr;
-            }
+            
 
 //                System.out.println(arr.toString() + " - " + totDistance);
+            finalRoute.add(arr);
             finalLijst.add(vakLijst);
             finalLijst.add(integerLijst);
 
-            System.out.println(finalLijst);
+            System.out.println("-"+vakLijst+"-");
 
         }
 
@@ -108,9 +129,16 @@ public class Permute {
         Vak vak23 = new Vak(3, 5, 23);
         Vak vak24 = new Vak(4, 5, 24);
         Vak vak25 = new Vak(5, 5, 25);
+        
+        ArrayList<Vak> a = new ArrayList<>();
+        a.add(vak4);
+        a.add(vak25);
+        a.add(vak12);
+        a.add(vak6);
 
-        permute(Arrays.asList(vak4, vak14, vak21, vak25, vak3, vak11), 0);
-        System.out.println("\n-----------------\n " + kortsteDistance + "  " + route);
+
+        permute(a, 0);
+        System.out.println("\n-----------------\n " + finalRoute + "  " + finalRoute.size()+ "\n" + afstanden);
 
     }
 }
