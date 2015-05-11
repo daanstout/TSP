@@ -11,6 +11,7 @@ import java.util.List;
     private Magazijn magazijn;
     private ArrayList<Artikel> routeData;
     private String Resultaat;
+    private int neirestNeigboorAfstand;
         
     
     public TravellingSalesmanProblem(Magazijn magazijn){
@@ -26,6 +27,11 @@ import java.util.List;
         routeData.add(a);
     }
 
+    public int getNearestNeighboorAfstand(){
+        return neirestNeigboorAfstand;
+    }
+    
+    
     static ArrayList permute(ArrayList<Integer> arr, int k){
         ArrayList<ArrayList> a = new ArrayList<>();
         for(int i = k; i < arr.size(); i++){
@@ -70,10 +76,13 @@ import java.util.List;
         ArrayList<Artikel> producten = new ArrayList<>();
         ArrayList<ArrayList> productenLijst = new ArrayList<>();
         boolean addible = false;
+        boolean advance;
+        Artikel loopArtikel;
         
         while(afstandCounter < afstandLijst.size() && aantalProducten != aantalProductenInLijst){
             continueWhile = true;
             counter = 1;
+            
             while(artikelCounter < productLijst.size() && continueWhile){
                 Artikel checkArtikel = productLijst.get(counter);
                 if(counter != artikelCounter){
@@ -84,11 +93,21 @@ import java.util.List;
                             productenLijst.add(producten);
                             continueWhile = false;
                         }else{
-                            for(ArrayList<Artikel> lijst : productenLijst){
-                                if(lijst.get(0) == checkArtikel){
-                                    for(ArrayList<Artikel> lijst2 : productenLijst){
-                                        if(lijst.get(1) == lijst2.get(0) || lijst.get(1) == lijst2.get(1)){
-                                            
+                            loopArtikel = checkArtikel;
+                            advance = false;
+                            while(advance){
+                                for(ArrayList<Artikel> lijst : productenLijst){
+                                    if(lijst.get(0) == loopArtikel){
+                                        for(ArrayList<Artikel> lijst2 : productenLijst){
+                                            if(lijst.get(1) == lijst2.get(0) || lijst.get(1) == lijst2.get(1)){
+                                                
+                                            }
+                                        }
+                                    }else if(lijst.get(1) == loopArtikel){
+                                        for(ArrayList<Artikel> lijst2 : productenLijst){
+                                            if(lijst.get(1) == lijst2.get(0) || lijst.get(1) == lijst2.get(1)){
+                                                
+                                            }
                                         }
                                     }
                                 }
@@ -117,6 +136,7 @@ import java.util.List;
     public ArrayList<Artikel> nearestNeighboor(ArrayList<Artikel> productLijst){
         ArrayList<Artikel> artikelLijst = new ArrayList<>();
         int counter = 0;
+        int totaleAfstand = 0;
         while(counter < productLijst.size()){
             Artikel startArtikel = productLijst.get(counter);
             if(startArtikel.getX() == 1 &&startArtikel.getY() == 1){
@@ -143,6 +163,7 @@ import java.util.List;
                 }
                 counter++;
             }
+            totaleAfstand = totaleAfstand+afstandTocheck;
             artikelLijst.add(productLijst.get(artikelToAdd));
             productLijst.remove(artikelToAdd);
         }
@@ -150,6 +171,8 @@ import java.util.List;
         if(artikelLijst.get(0).getNaam() == null){
             artikelLijst.remove(0);
         }
+        
+        neirestNeigboorAfstand = totaleAfstand;
         
         return artikelLijst;
     }
