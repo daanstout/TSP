@@ -54,7 +54,7 @@ public class Tekenpanel extends JPanel{
             
             g2.setColor(Color.BLACK);
             
-            g2.fillOval(5 + (38 + (76*artikel1X)), 5 + (76*5) - (38+(76*artikel1Y)), 10, 10);
+            g2.fillOval((38 + (76*artikel1X)), (76*5) - (38+(76*artikel1Y)), 20, 20);
             
             countArtikelen++;
         }
