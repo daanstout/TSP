@@ -201,9 +201,6 @@ public class Scherm extends JFrame implements ActionListener {
                             order.emptyAlgoritmeLijst();
                             lijst = tsp.nearestNeighboor(order.getProductLijst());
                         }
-                        if(lijst == order.getProductLijst()){
-                            System.out.println("test");
-                        }
                         if(!lijst.isEmpty()){
                             order.addAlgoritmeLijst(lijst.get(0));
                             lijst.remove(0);
@@ -227,6 +224,7 @@ public class Scherm extends JFrame implements ActionListener {
                         }
                         if(!drawing){
                             Afstanden.set(2, Integer.toString(tsp.getOrderAfstand(order.getProductLijst())));
+                            drawingCount = 0;
                             t.stop();
                         }
                         
