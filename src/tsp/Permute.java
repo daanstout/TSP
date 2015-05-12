@@ -35,7 +35,6 @@ public class Permute {
     static void permute(ArrayList<Vak> arr, int k) {
         
         if(finalRoute == null) {
-            System.out.println("ja kak");
             finalRoute = new ArrayList<>();
             afstanden = new ArrayList<>();
         }
@@ -134,7 +133,6 @@ public class Permute {
         a.add(vak4);
         a.add(vak25);
         a.add(vak12);
-        a.add(vak6);
 
 
         permute(a, 0);
