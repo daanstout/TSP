@@ -38,6 +38,10 @@ public class Order {
         algoritmeLijst.add(a);
     }
     
+    public Artikel getArtikel(int a){
+        return productLijst.get(a);
+    }
+    
     public int getOrderNummer(){
         return orderNummer;
     }

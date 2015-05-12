@@ -34,7 +34,9 @@ public class Scherm extends JFrame implements ActionListener {
     private Magazijn magazijn;
     private Order order;
     private String algoritme;
-    ArrayList<Artikel> lijst;
+    private ArrayList<Artikel> lijst;
+    private boolean drawing;
+    private int drawingCount;
 
     public Scherm(Magazijn magazijn, Order order, TravellingSalesmanProblem tsp) {
         this.algoritme = null;
@@ -45,6 +47,8 @@ public class Scherm extends JFrame implements ActionListener {
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
+        drawing = false;
+        drawingCount = 0;
 
         lijst = new ArrayList<>();
         Algoritmes = new ArrayList<>();
@@ -197,6 +201,9 @@ public class Scherm extends JFrame implements ActionListener {
                             order.emptyAlgoritmeLijst();
                             lijst = tsp.nearestNeighboor(order.getProductLijst());
                         }
+                        if(lijst == order.getProductLijst()){
+                            System.out.println("test");
+                        }
                         if(!lijst.isEmpty()){
                             order.addAlgoritmeLijst(lijst.get(0));
                             lijst.remove(0);
@@ -207,18 +214,22 @@ public class Scherm extends JFrame implements ActionListener {
                         }
                     } else if (algoritme == "Volgorde van order") {
                         System.out.println(algoritme);
-                        if(lijst.isEmpty()){
+                        if(!drawing){
                             order.emptyAlgoritmeLijst();
-                            lijst = order.getProductLijst();
+                            drawing = true;
                         }
-                        if(!lijst.isEmpty()){
-                            order.addAlgoritmeLijst(lijst.get(0));
-                            lijst.remove(0);
+                        if(drawing && drawingCount < order.getProductLijst().size()){
+                            order.addAlgoritmeLijst(order.getArtikel(drawingCount));
+                            drawingCount++;
+                            if(drawingCount == order.getProductLijst().size()){
+                                drawing = false;
+                            }
                         }
-                        if(lijst.isEmpty()){
+                        if(!drawing){
                             Afstanden.set(2, Integer.toString(tsp.getOrderAfstand(order.getProductLijst())));
                             t.stop();
                         }
+                        
                     }
                     
                     revalidate();
