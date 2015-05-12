@@ -83,11 +83,13 @@ public class Permute {
             
 
 //                System.out.println(arr.toString() + " - " + totDistance);
+                
             finalRoute.add(arr);
+            System.out.println(arr);
             finalLijst.add(vakLijst);
             finalLijst.add(integerLijst);
 
-            System.out.println("-"+vakLijst+"-");
+//            System.out.println("-"+vakLijst+"-");
 
         }
 
