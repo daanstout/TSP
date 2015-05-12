@@ -46,6 +46,19 @@ public class Tekenpanel extends JPanel{
             }
         }
         
+        ArrayList<Artikel> artikelsInOrder = order.getProductLijst();
+        int countArtikelen = 0;
+        while(countArtikelen<artikelsInOrder.size()){
+            int artikel1X = artikelsInOrder.get(countArtikelen).getX()-1;
+            int artikel1Y = artikelsInOrder.get(countArtikelen).getY()-1;
+            
+            g2.setColor(Color.BLACK);
+            
+            g2.fillOval(5 + (38 + (76*artikel1X)), 5 + (76*5) - (38+(76*artikel1Y)), 10, 10);
+            
+            countArtikelen++;
+        }
+        
         if(algoritme != null){
             ArrayList<Artikel> lijst = order.getAlgoritmeLijst();
             int grootte = lijst.size()-1;
@@ -56,11 +69,6 @@ public class Tekenpanel extends JPanel{
                 int artikel1Y = lijst.get(count).getY()-1;
                 int artikel2X = lijst.get(count+1).getX()-1;
                 int artikel2Y = lijst.get(count+1).getY()-1;
-
-                g2.setColor(Color.BLACK);
-
-                g2.fillOval(5 + (38 + (76*artikel1X)), 5 + (76*5) - (38+(76*artikel1Y)), 10, 10);
-                g2.fillOval(5 + (38 + (76*artikel2X)), 5 + (76*5) - (38+(76*artikel2Y)), 10, 10);
 
 
 

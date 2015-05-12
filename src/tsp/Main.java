@@ -81,6 +81,7 @@ public class Main {
         Artikel A4 = new Artikel(4, 1, "Mobiel", 3, 3, 4);
         Artikel A5 = new Artikel(5, 1, "Mobiel", 5, 5, 5);
         Artikel A6 = new Artikel(6, 1, "Mobiel", 4, 4, 6);
+        Artikel A7 = new Artikel(7, 1, "Mobiel", 2, 4, 7);
         
 //        System.out.println(vak1.distanceTo(vak9));
         
@@ -103,6 +104,7 @@ public class Main {
         order.addProduct(A1);
         order.addProduct(A2);
         order.addProduct(A6);
+        order.addProduct(A7);
         
         System.out.println(order.getProductLijst());
         
