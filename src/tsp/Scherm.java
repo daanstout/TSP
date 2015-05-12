@@ -34,6 +34,7 @@ public class Scherm extends JFrame implements ActionListener {
     private Magazijn magazijn;
     private Order order;
     private String algoritme;
+    ArrayList<Artikel> lijst;
 
     public Scherm(Magazijn magazijn, Order order, TravellingSalesmanProblem tsp) {
         this.algoritme = null;
@@ -45,6 +46,7 @@ public class Scherm extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
+        lijst = new ArrayList<>();
         Algoritmes = new ArrayList<>();
         Afstanden = new ArrayList<>();
         ALTijd = new ArrayList<>();
@@ -178,7 +180,7 @@ public class Scherm extends JFrame implements ActionListener {
         pack();
         this.setVisible(true);
 
-        t = new Timer(100, new ActionListener() {
+        t = new Timer(1000, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -191,17 +193,36 @@ public class Scherm extends JFrame implements ActionListener {
 //                        order.setProductLijst(tsp.volledigeEnumeratie(order.getProductLijst()));
                     } else if (algoritme == "Simpel gretig algoritme") {
                         System.out.println(algoritme);
-                        order.setAlgoritmeLijst(tsp.nearestNeighboor(order.getProductLijst()));
-                        Afstanden.set(1, Integer.toString(tsp.getNearestNeighboorAfstand()));
+                        if(lijst.isEmpty()){
+                            order.emptyAlgoritmeLijst();
+                            lijst = tsp.nearestNeighboor(order.getProductLijst());
+                        }
+                        if(!lijst.isEmpty()){
+                            order.addAlgoritmeLijst(lijst.get(0));
+                            lijst.remove(0);
+                        }
+                        if(lijst.isEmpty()){
+                            Afstanden.set(1, Integer.toString(tsp.getNearestNeighboorAfstand()));
+                            t.stop();
+                        }
                     } else if (algoritme == "Volgorde van order") {
                         System.out.println(algoritme);
-                        order.setAlgoritmeLijst(order.getProductLijst());
-                        Afstanden.set(2, Integer.toString(tsp.getOrderAfstand(order.getProductLijst())));
+                        if(lijst.isEmpty()){
+                            order.emptyAlgoritmeLijst();
+                            lijst = order.getProductLijst();
+                        }
+                        if(!lijst.isEmpty()){
+                            order.addAlgoritmeLijst(lijst.get(0));
+                            lijst.remove(0);
+                        }
+                        if(lijst.isEmpty()){
+                            Afstanden.set(2, Integer.toString(tsp.getOrderAfstand(order.getProductLijst())));
+                            t.stop();
+                        }
                     }
                     
                     revalidate();
                     repaint();
-                    t.stop();
                 }else{
                     t.stop();
                 }

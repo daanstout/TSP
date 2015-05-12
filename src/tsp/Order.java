@@ -34,6 +34,10 @@ public class Order {
         return algoritmeLijst;
     }
     
+    public void addAlgoritmeLijst(Artikel a){
+        algoritmeLijst.add(a);
+    }
+    
     public int getOrderNummer(){
         return orderNummer;
     }
@@ -44,6 +48,10 @@ public class Order {
     
     protected void setAlgoritmeLijst(ArrayList<Artikel> productlijst){
         this.algoritmeLijst = productlijst;
+    }
+    
+    public void emptyAlgoritmeLijst(){
+        algoritmeLijst.clear();
     }
     
     public void importXml(){
