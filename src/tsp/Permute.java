@@ -16,12 +16,6 @@ import java.util.List;
  */
 public class Permute {
 
-    public static ArrayList<List> finalLijst;
-    public static ArrayList<List> vakLijst;
-    public static ArrayList<Integer> integerLijst;
-    public static int kortsteDistance = 99;
-    public static List<Vak> route;
-
     public static ArrayList<ArrayList<Vak>> finalRoute;
     public static ArrayList<Integer> afstanden;
 
@@ -59,51 +53,22 @@ public class Permute {
             totDistance += startPunt.distanceTo(arr.get(0));
             for (int j = 0; j < arr.size() - 1; j++) {
 
-                finalLijst = new ArrayList<>();
-                vakLijst = new ArrayList<>();
-                integerLijst = new ArrayList<>();
-
                 Vak vak = arr.get(j);
                 Vak vak2 = arr.get(j + 1);
                 count++;
                 totDistance += vak.distanceTo(vak2);
+                
                 // Weer terug naar startpunt als alles is langsgeweest
-                // TODO, Als er iets in vak 1 zit gaat hij vervelend doen.
                 if (count == arr.size()) {
                     totDistance += vak2.distanceTo(startPunt);
                 }
-
-                vakLijst.add(arr);
-                integerLijst.add(totDistance);
-
-//                afstanden.add(totDistance);
-//                finalRoute.add(arr);
             }
             afstanden.add(totDistance);
-//                finalRoute.add(arr);
-
-//                System.out.println(arr.toString() + " - " + totDistance);
             finalRoute.add(arr);
-            System.out.println(k);
-            System.out.println(arr);
-            System.out.println(finalRoute);
-            finalLijst.add(vakLijst);
-            finalLijst.add(integerLijst);
-
-//            System.out.println("-"+vakLijst+"-");
         }
 
     }
 
-//    public static ArrayList VaktoInt(ArrayList<Vak> k){
-//        ArrayList<Integer> a = new ArrayList<>();
-//        
-//        for(Vak h : k){
-//            a.add(h.getNr());
-//        }
-//        
-//        return a;
-//    }
     public static void main(String[] args) {
         Vak vak1 = new Vak(1, 1, 1);
         Vak vak2 = new Vak(2, 2, 2);
