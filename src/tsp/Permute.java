@@ -16,11 +16,13 @@ import java.util.List;
  */
 public class Permute {
 
-    public static ArrayList<ArrayList<Vak>> finalRoute;
+    public static ArrayList<ArrayList<Vak>> switchedRoutes;
     public static ArrayList<Integer> afstanden;
+    public static int kortsteDistance = 99;
+    public static ArrayList<Vak> kortsteRoute;
 
     public Permute() {
-        finalRoute = new ArrayList<>();
+        switchedRoutes = new ArrayList<>();
         afstanden = new ArrayList<>();
     }
 
@@ -32,8 +34,8 @@ public class Permute {
         }
         
         
-        if (finalRoute == null) {
-            finalRoute = new ArrayList<>();
+        if (switchedRoutes == null) {
+            switchedRoutes = new ArrayList<>();
             afstanden = new ArrayList<>();
         }
 
@@ -62,11 +64,19 @@ public class Permute {
                 if (count == arr.size()) {
                     totDistance += vak2.distanceTo(startPunt);
                 }
+                
+                for(int l = 1; l < switchedRoutes.size();l++) {
+                        if(afstanden.get(l) < kortsteDistance) {
+                            kortsteDistance = afstanden.get(l);
+                            kortsteRoute = switchedRoutes.get(l);
+                        }
+                    }
             }
             afstanden.add(totDistance);
-            finalRoute.add(arr);
+            switchedRoutes.add(arr);
         }
-
+                   
+                    
     }
 
     public static void main(String[] args) {
@@ -100,9 +110,12 @@ public class Permute {
         a.add(vak4);
         a.add(vak25);
         a.add(vak12);
+        a.add(vak15);
 
         permute(a, 0);
-        System.out.println("\n-----------------\n " + finalRoute + "  " + finalRoute.size() + "\n" + afstanden);
+        System.out.println("\n-----------------\n " + switchedRoutes + "  " + switchedRoutes.size() + "\n" + afstanden);
+        System.out.println("----------------------");
+        System.out.println("Kortste route : "+kortsteDistance + " " + kortsteRoute);
 
     }
 }
