@@ -24,7 +24,7 @@ public class Main {
         Magazijn mag = new Magazijn(25);
         
         Vak vak1 = new Vak(1, 1, 1);
-        Vak vak2 = new Vak(2, 2, 2);
+        Vak vak2 = new Vak(2, 1, 2);
         Vak vak3 = new Vak(3, 1, 3);
         Vak vak4 = new Vak(4, 1, 4);
         Vak vak5 = new Vak(5, 1, 5);
@@ -85,12 +85,10 @@ public class Main {
         
 //        System.out.println(vak1.distanceTo(vak9));
         
-        ArrayList<Vak> vakLijst = new ArrayList<>();
+        mag.addPick(vak2);
+        mag.addPick(vak14);
+        mag.addPick(vak21);
         
-        vakLijst.add(vak1);
-        vakLijst.add(vak5);
-        vakLijst.add(vak19);
-        vakLijst.add(vak21);
         
         Klant w = new Klant("Daan", "Stout", "Schellerpad 48", "8017 AM", "Zwolle");
         
@@ -107,7 +105,7 @@ public class Main {
         order.addProduct(A7);
         
         System.out.println(order.getProductLijst());
-        
+        System.out.println(A1.getX() + " " + A1.getY());
         Scherm scherm = new Scherm(mag, order, tsp);
         
         Insets insets = scherm.getInsets();
