@@ -17,11 +17,11 @@ import java.util.List;
 public class Permute {
 
     public static ArrayList<List> finalLijst;
-    public static ArrayList<List> vakLijst ;
+    public static ArrayList<List> vakLijst;
     public static ArrayList<Integer> integerLijst;
     public static int kortsteDistance = 99;
     public static List<Vak> route;
-    
+
     public static ArrayList<ArrayList<Vak>> finalRoute;
     public static ArrayList<Integer> afstanden;
 
@@ -29,12 +29,16 @@ public class Permute {
         finalRoute = new ArrayList<>();
         afstanden = new ArrayList<>();
     }
-    
-    
 
-    static void permute(ArrayList<Vak> arr, int k) {
+    static void permute(ArrayList<Vak> arrIn, int k) {
+        ArrayList<Vak> arr = new ArrayList<>();
         
-        if(finalRoute == null) {
+        for (Vak vak : arrIn) {
+            arr.add(vak);
+        }
+        
+        
+        if (finalRoute == null) {
             finalRoute = new ArrayList<>();
             afstanden = new ArrayList<>();
         }
@@ -63,7 +67,7 @@ public class Permute {
                 Vak vak2 = arr.get(j + 1);
                 count++;
                 totDistance += vak.distanceTo(vak2);
-                    // Weer terug naar startpunt als alles is langsgeweest
+                // Weer terug naar startpunt als alles is langsgeweest
                 // TODO, Als er iets in vak 1 zit gaat hij vervelend doen.
                 if (count == arr.size()) {
                     totDistance += vak2.distanceTo(startPunt);
@@ -71,26 +75,22 @@ public class Permute {
 
                 vakLijst.add(arr);
                 integerLijst.add(totDistance);
-                
-                
+
 //                afstanden.add(totDistance);
 //                finalRoute.add(arr);
-                
-            } 
-                afstanden.add(totDistance);
+            }
+            afstanden.add(totDistance);
 //                finalRoute.add(arr);
 
-            
-
 //                System.out.println(arr.toString() + " - " + totDistance);
-                
             finalRoute.add(arr);
+            System.out.println(k);
             System.out.println(arr);
+            System.out.println(finalRoute);
             finalLijst.add(vakLijst);
             finalLijst.add(integerLijst);
 
 //            System.out.println("-"+vakLijst+"-");
-
         }
 
     }
@@ -130,15 +130,14 @@ public class Permute {
         Vak vak23 = new Vak(3, 5, 23);
         Vak vak24 = new Vak(4, 5, 24);
         Vak vak25 = new Vak(5, 5, 25);
-        
+
         ArrayList<Vak> a = new ArrayList<>();
         a.add(vak4);
         a.add(vak25);
         a.add(vak12);
 
-
         permute(a, 0);
-        System.out.println("\n-----------------\n " + finalRoute + "  " + finalRoute.size()+ "\n" + afstanden);
+        System.out.println("\n-----------------\n " + finalRoute + "  " + finalRoute.size() + "\n" + afstanden);
 
     }
 }
