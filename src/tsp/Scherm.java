@@ -35,6 +35,7 @@ public class Scherm extends JFrame implements ActionListener {
     private Order order;
     private String algoritme;
     private ArrayList<Artikel> lijst;
+    private ArrayList<Vak> vakLijst;
     private boolean drawing;
     private int drawingCount;
 
@@ -50,6 +51,7 @@ public class Scherm extends JFrame implements ActionListener {
         drawing = false;
         drawingCount = 0;
 
+        vakLijst = new ArrayList<>();
         lijst = new ArrayList<>();
         Algoritmes = new ArrayList<>();
         Afstanden = new ArrayList<>();
@@ -192,6 +194,14 @@ public class Scherm extends JFrame implements ActionListener {
                     if (algoritme == "Volledige enumeratie") {
                         System.out.println(algoritme);
 //                        order.setProductLijst(tsp.volledigeEnumeratie(order.getProductLijst()));
+                        if(vakLijst.isEmpty()){
+                            order.emptyAlgoritmeLijst();
+                            vakLijst = tsp.artikelToVak(order.getProductLijst());
+                            System.out.println(vakLijst);
+                            tsp.permute(vakLijst, 0);
+                            System.out.println("Kortste route : "+tsp.kortsteDistance + " " + tsp.kortsteRoute);
+                            t.stop();
+                        }
                     } else if (algoritme == "Simpel gretig algoritme") {
                         if(lijst.isEmpty()){
                             order.emptyAlgoritmeLijst();

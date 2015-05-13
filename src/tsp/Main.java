@@ -24,7 +24,7 @@ public class Main {
         Magazijn mag = new Magazijn(25);
         
         Vak vak1 = new Vak(1, 1, 1);
-        Vak vak2 = new Vak(2, 2, 2);
+        Vak vak2 = new Vak(2, 1, 2);
         Vak vak3 = new Vak(3, 1, 3);
         Vak vak4 = new Vak(4, 1, 4);
         Vak vak5 = new Vak(5, 1, 5);
@@ -75,15 +75,15 @@ public class Main {
         mag.addVak(vak24);
         mag.addVak(vak25);
         
-        Artikel A1 = new Artikel(1, 1, "Mobiel", 2, 1, 1);
-        Artikel A2 = new Artikel(2, 1, "Mobiel", 2, 5, 2);
-        Artikel A3 = new Artikel(3, 1, "Mobiel", 1, 2, 3);
-        Artikel A4 = new Artikel(4, 1, "Mobiel", 3, 3, 4);
-        Artikel A5 = new Artikel(5, 1, "Mobiel", 5, 5, 5);
-        Artikel A6 = new Artikel(6, 1, "Mobiel", 4, 4, 6);
-        Artikel A7 = new Artikel(7, 1, "Mobiel", 2, 4, 7);
-        Artikel A8 = new Artikel(8, 1, "Mobiel", 5, 1, 8);
-        Artikel A9 = new Artikel(9, 1, "Mobiel", 1, 5, 9);
+        Artikel A1 = new Artikel(1, 1, "Mobiel", 2, 1, 2);
+        Artikel A2 = new Artikel(2, 1, "Mobiel", 2, 5, 22);
+        Artikel A3 = new Artikel(3, 1, "Mobiel", 1, 2, 6);
+        Artikel A4 = new Artikel(4, 1, "Mobiel", 3, 3, 13);
+        Artikel A5 = new Artikel(5, 1, "Mobiel", 5, 5, 25);
+        Artikel A6 = new Artikel(6, 1, "Mobiel", 4, 4, 19);
+        Artikel A7 = new Artikel(7, 1, "Mobiel", 2, 4, 17);
+        Artikel A8 = new Artikel(8, 1, "Mobiel", 5, 1, 5);
+        Artikel A9 = new Artikel(9, 1, "Mobiel", 1, 5, 21);
         
 //        System.out.println(vak1.distanceTo(vak9));
         
@@ -107,11 +107,11 @@ public class Main {
         order.addProduct(A2);
         order.addProduct(A6);
         order.addProduct(A7);
-        order.addProduct(A8);
-        order.addProduct(A9);
+//        order.addProduct(A8);
+//        order.addProduct(A9);
         
         System.out.println(order.getProductLijst());
-        
+        System.out.println(tsp.artikelToVak(order.getProductLijst()));
         Scherm scherm = new Scherm(mag, order, tsp);
         
         Insets insets = scherm.getInsets();
