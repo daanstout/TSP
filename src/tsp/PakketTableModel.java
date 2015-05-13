@@ -21,13 +21,12 @@ public class PakketTableModel extends AbstractTableModel {
     protected List<String> colNames;
 
     
-    PakketTableModel(List data1, List data2, List data3, List colNames) {
-       if(colNames.size() < 3) {
+    PakketTableModel(List data1, List data2, List colNames) {
+       if(colNames.size() < 2) {
            throw new IllegalArgumentException("kolomnamen moet 3 zijn!");
        }
        this.data1 = data1;
        this.data2 = data2;
-       this.data3 = data3;
        this.colNames = colNames;
        
     }
@@ -40,13 +39,11 @@ public class PakketTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         try {
-            if(columnIndex == 0 || columnIndex == 1 || columnIndex == 2){
+            if(columnIndex == 0 || columnIndex == 1){
                 if(columnIndex == 0){
                     return data1.get(rowIndex);
-                }else if(columnIndex == 1){
+                }else {
                     return data2.get(rowIndex);
-                }else{
-                    return data3.get(rowIndex);
                 }
             }else{
                 return null;

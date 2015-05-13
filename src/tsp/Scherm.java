@@ -71,17 +71,15 @@ public class Scherm extends JFrame implements ActionListener {
         Algoritmes.add("Volledige enumeratie");
         Algoritmes.add("Simpel gretig algoritme");
         Algoritmes.add("Volgorde van order");
-        Afstanden.add("25");
-        Afstanden.add("30");
-        Afstanden.add("27");
-        ALTijd.add("5 sec");
-        ALTijd.add("7 sec");
-        ALTijd.add("6 sec");
+        Afstanden.add("-");
+        Afstanden.add("-");
+        Afstanden.add("-");
+        
 
         Insets insets = this.getInsets();
 
-        ArrayList<String> wachtrijHeading = new ArrayList<String>(Arrays.asList("Algoritme", "Afstand (CM)", "Tijd"));
-        tResultaat = new JTable(new PakketTableModel(Algoritmes, Afstanden, ALTijd, wachtrijHeading));
+        ArrayList<String> wachtrijHeading = new ArrayList<String>(Arrays.asList("Algoritme", "Afstand (CM)"));
+        tResultaat = new JTable(new PakketTableModel(Algoritmes, Afstanden, wachtrijHeading));
         getContentPane().add(new JScrollPane(tResultaat), BorderLayout.CENTER);
         tResultaat.setPreferredSize(new Dimension(275, 422));
         tResultaat.setFont(defaultFont);
@@ -95,7 +93,6 @@ public class Scherm extends JFrame implements ActionListener {
 
         tResultaat.getColumnModel().getColumn(0).setPreferredWidth(100);
         tResultaat.getColumnModel().getColumn(1).setPreferredWidth(15);
-        tResultaat.getColumnModel().getColumn(2).setPreferredWidth(10);
 
         JPanel j = new JPanel(new BorderLayout());
         j.add(tResultaat.getTableHeader(), BorderLayout.PAGE_START);
