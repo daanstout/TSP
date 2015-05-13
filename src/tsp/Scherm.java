@@ -194,12 +194,20 @@ public class Scherm extends JFrame implements ActionListener {
                     if (algoritme == "Volledige enumeratie") {
                         System.out.println(algoritme);
 //                        order.setProductLijst(tsp.volledigeEnumeratie(order.getProductLijst()));
-                        if(vakLijst.isEmpty()){
+                        if(lijst.isEmpty()){
                             order.emptyAlgoritmeLijst();
                             vakLijst = tsp.artikelToVak(order.getProductLijst());
                             System.out.println(vakLijst);
                             tsp.permute(vakLijst, 0);
                             System.out.println("Kortste route : "+tsp.kortsteDistance + " " + tsp.kortsteRoute);
+                            lijst = tsp.vakToArtikel(vakLijst);
+                        }
+                        if(!lijst.isEmpty()){
+                            order.addAlgoritmeLijst(lijst.get(0));
+                            lijst.remove(0);
+                        }
+                        if(lijst.isEmpty()){
+                            Afstanden.set(0, Integer.toString(tsp.kortsteDistance));
                             t.stop();
                         }
                     } else if (algoritme == "Simpel gretig algoritme") {
