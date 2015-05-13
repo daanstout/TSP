@@ -193,7 +193,6 @@ public class Scherm extends JFrame implements ActionListener {
                         System.out.println(algoritme);
 //                        order.setProductLijst(tsp.volledigeEnumeratie(order.getProductLijst()));
                     } else if (algoritme == "Simpel gretig algoritme") {
-                        System.out.println(algoritme);
                         if(lijst.isEmpty()){
                             order.emptyAlgoritmeLijst();
                             lijst = tsp.nearestNeighboor(order.getProductLijst());
@@ -207,7 +206,6 @@ public class Scherm extends JFrame implements ActionListener {
                             t.stop();
                         }
                     } else if (algoritme == "Volgorde van order") {
-                        System.out.println(algoritme);
                         if(!drawing){
                             order.emptyAlgoritmeLijst();
                             drawing = true;
@@ -242,7 +240,7 @@ public class Scherm extends JFrame implements ActionListener {
         if (e.getSource() == jbStart) {
             t.start();
         } else if (e.getSource() == jbStop) {
-            System.out.println("Stop");
+            t.stop();
         } else if (e.getSource() == jbImport) {
             System.out.println("Import");
         } else if (e.getSource() == jcAlgoritme){
