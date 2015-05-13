@@ -26,17 +26,6 @@ public class Permute {
         afstanden = new ArrayList<>();
     }
 
-    public ArrayList<Vak> artikelToVak(ArrayList<Artikel> artikellen){
-        ArrayList<Vak> vakken = new ArrayList<>();
-        
-        for(Artikel artikel : artikellen){
-            
-        }
-        
-        return vakken;
-    }
-    
-    
     static void permute(ArrayList<Vak> arrIn, int k) {
         ArrayList<Vak> arr = new ArrayList<>();
         

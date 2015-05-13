@@ -10,8 +10,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.table.DefaultTableCellRenderer;
-import static tsp.Permute.*;
-
 
 public class Scherm extends JFrame implements ActionListener {
 
@@ -194,9 +192,6 @@ public class Scherm extends JFrame implements ActionListener {
                     if (algoritme == "Volledige enumeratie") {
                         System.out.println(algoritme);
 //                        order.setProductLijst(tsp.volledigeEnumeratie(order.getProductLijst()));
-                         
-                        permute(magazijn.getPickLijst(), 0);
-                        System.out.println("Kortste route : "+kortsteDistance + " " + kortsteRoute);
                     } else if (algoritme == "Simpel gretig algoritme") {
                         System.out.println(algoritme);
                         if(lijst.isEmpty()){

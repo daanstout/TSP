@@ -12,17 +12,11 @@ import java.util.List;
     private ArrayList<Artikel> routeData;
     private String Resultaat;
     private int nearestNeigboorAfstand;
-    public static ArrayList<ArrayList<Vak>> switchedRoutes;
-    public static ArrayList<Integer> afstanden;
-    public static int kortsteDistance = 99;
-    public static ArrayList<Vak> kortsteRoute;
         
     
     public TravellingSalesmanProblem(Magazijn magazijn){
         this.magazijn = magazijn;
         routeData = new ArrayList<>();
-        switchedRoutes = new ArrayList<>();
-        afstanden = new ArrayList<>();
     }
 
     public String setResultaat() {
@@ -45,59 +39,21 @@ import java.util.List;
         return nearestNeigboorAfstand;
     }
     
-    static void permute(ArrayList<Vak> arrIn, int k) {
-           ArrayList<Vak> arr = new ArrayList<>();
-
-           for (Vak vak : arrIn) {
-               arr.add(vak);
-           }
-
-
-           if (switchedRoutes == null) {
-               switchedRoutes = new ArrayList<>();
-               afstanden = new ArrayList<>();
-           }
-
-           for (int i = k; i < arr.size(); i++) {
-               Collections.swap(arr, i, k);
-               permute(arr, k + 1);
-               Collections.swap(arr, k, i);
-           }
-
-           if (k == arr.size() - 1) {
-
-               // Standaard startpunt
-               Vak startPunt = new Vak(1, 1, 0);
-
-               int totDistance = 0;
-               int count = 1;
-               totDistance += startPunt.distanceTo(arr.get(0));
-               for (int j = 0; j < arr.size() - 1; j++) {
-
-                   Vak vak = arr.get(j);
-                   Vak vak2 = arr.get(j + 1);
-                   count++;
-                   totDistance += vak.distanceTo(vak2);
-
-                   // Weer terug naar startpunt als alles is langsgeweest
-                   if (count == arr.size()) {
-                       totDistance += vak2.distanceTo(startPunt);
-                   }
-
-                   for(int l = 1; l < switchedRoutes.size();l++) {
-                           if(afstanden.get(l) < kortsteDistance) {
-                               kortsteDistance = afstanden.get(l);
-                               kortsteRoute = switchedRoutes.get(l);
-                           }
-                       }
-               }
-               afstanden.add(totDistance);
-               switchedRoutes.add(arr);
-           }
-
-
-       }
-
+    
+    static ArrayList permute(ArrayList<Integer> arr, int k){
+        ArrayList<ArrayList> a = new ArrayList<>();
+        for(int i = k; i < arr.size(); i++){
+        if (k == arr.size() -1){
+            System.out.println(Arrays.toString(arr.toArray()));
+        }
+        
+            Collections.swap(arr, i, k);
+            permute(arr, k+1);
+            Collections.swap(arr, k, i);
+            a.add(arr);
+        }
+        return a;
+    }
     
     public ArrayList<Artikel> volledigeEnumeratie(ArrayList<Artikel> productLijst){
         ArrayList<Artikel> artikelLijst = new ArrayList<>();
