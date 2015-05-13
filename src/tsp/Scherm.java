@@ -200,7 +200,7 @@ public class Scherm extends JFrame implements ActionListener {
                             System.out.println(vakLijst);
                             tsp.permute(vakLijst, 0);
                             System.out.println("Kortste route : "+tsp.kortsteDistance + " " + tsp.kortsteRoute);
-                            lijst = tsp.vakToArtikel(vakLijst);
+                            lijst = tsp.vakToArtikel(tsp.kortsteRoute);
                         }
                         if(!lijst.isEmpty()){
                             order.addAlgoritmeLijst(lijst.get(0));
