@@ -98,7 +98,7 @@ public class Main {
         
         Order order = new Order(2, w);
         
-        TravellingSalesmanProblem tsp = new TravellingSalesmanProblem(mag);
+        TravellingSalesmanProblem tsp = new TravellingSalesmanProblem(mag, order);
         
         order.addProduct(A3);
         order.addProduct(A4);

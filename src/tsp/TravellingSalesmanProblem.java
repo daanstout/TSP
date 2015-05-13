@@ -16,10 +16,12 @@ import java.util.List;
     public static ArrayList<Integer> afstanden;
     public static int kortsteDistance = 99;
     public static ArrayList<Vak> kortsteRoute;
+    public Order order;
         
     
-    public TravellingSalesmanProblem(Magazijn magazijn){
+    public TravellingSalesmanProblem(Magazijn magazijn, Order order){
         this.magazijn = magazijn;
+        this.order = order;
         routeData = new ArrayList<>();
         switchedRoutes = new ArrayList<>();
         afstanden = new ArrayList<>();
@@ -43,6 +45,52 @@ import java.util.List;
     
     public int getNearestNeighboorAfstand(){
         return nearestNeigboorAfstand;
+    }
+    
+    public ArrayList<Vak> artikelToVak(ArrayList<Artikel> artikellen){
+        ArrayList<Vak> vakken = new ArrayList<>();
+        
+        for(Artikel artikel : artikellen){
+            int artikelX = artikel.getX();
+            int artikelY = artikel.getY();
+            int counter = 0;
+            while(counter < magazijn.getAantalVakken()){
+                int vakX = magazijn.getVak(counter).getX();
+                int vakY = magazijn.getVak(counter).getY();
+                
+                if(vakX == artikelX && vakY == artikelY){
+                    vakken.add(magazijn.getVak(counter));
+                    counter = magazijn.getAantalVakken();
+                }else{
+                    counter++;
+                }
+            }
+        }
+        
+        return vakken;
+    }
+    
+    public ArrayList<Artikel> vakToArtikel(ArrayList<Vak> vakken){
+        ArrayList<Artikel> artikellen = new ArrayList<>();
+        
+        for(Vak vak : vakken){
+            int vakX = vak.getX();
+            int vakY = vak.getY();
+            int counter = 0;
+            while(counter < order.getProductLijst().size()){
+                int artikelX = order.getArtikel(counter).getX();
+                int artikelY = order.getArtikel(counter).getY();
+                
+                if(vakX == artikelX && vakY == artikelY){
+                    artikellen.add(order.getArtikel(counter));
+                    counter = 25;
+                }else{
+                    counter++;
+                }
+            }
+        }
+        
+        return artikellen;
     }
     
     static void permute(ArrayList<Vak> arrIn, int k) {
