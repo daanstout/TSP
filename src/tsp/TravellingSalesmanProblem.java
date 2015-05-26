@@ -34,7 +34,7 @@ import java.util.List;
     public void addArtikel(Artikel a){
         routeData.add(a);
     }
-    
+    // deze functie berekent de afstand van de gegeven artikel lijst
     public int getOrderAfstand(ArrayList<Artikel> productLijst){
         int afstand = 0;
         for(int i = 0;i+1<productLijst.size();i++){
@@ -46,7 +46,7 @@ import java.util.List;
     public int getNearestNeighboorAfstand(){
         return nearestNeigboorAfstand;
     }
-    
+    // deze kijkt welk vak bij het artikel hoort
     public ArrayList<Vak> artikelToVak(ArrayList<Artikel> artikellen){
         ArrayList<Vak> vakken = new ArrayList<>();
         
@@ -69,7 +69,7 @@ import java.util.List;
         
         return vakken;
     }
-    
+    // deze kijkt welk artikel bij welk vak hoort
     public ArrayList<Artikel> vakToArtikel(ArrayList<Vak> vakken){
         ArrayList<Artikel> artikellen = new ArrayList<>();
         
@@ -92,7 +92,7 @@ import java.util.List;
         
         return artikellen;
     }
-    
+    // deze funtie genereert alle mogelijke routes
     static void permute(ArrayList<Vak> arrIn, int k) {
         ArrayList<Vak> arr = new ArrayList<>();
         
@@ -142,18 +142,18 @@ import java.util.List;
             afstanden.add(totDistance);
             switchedRoutes.add(arr);
         }
-                   
-                    
     }
-    
+    // dit is het nearest neighboor algoritme, deze kijkt per artikel welk het dichtst bij is welke nog niet is gebruikt
     public ArrayList<Artikel> nearestNeighboor(ArrayList<Artikel> productLijst){
         ArrayList<Artikel> gegevenArtikelLijst = new ArrayList<>();
         for(int i = 0;i<productLijst.size();i++){
             gegevenArtikelLijst.add(productLijst.get(i));
         }
+        
         ArrayList<Artikel> artikelLijst = new ArrayList<>();
         int counter = 0;
         int totaleAfstand = 0;
+        // hier wordt gekeken of er een artikel is dat de coördinaten (1, 1) heeft
         while(counter < gegevenArtikelLijst.size()){
             Artikel startArtikel = gegevenArtikelLijst.get(counter);
             if(startArtikel.getX() == 1 &&startArtikel.getY() == 1){
@@ -162,12 +162,12 @@ import java.util.List;
             }
             counter++;
         }
-        
+        // als er geen artikel is met de coördinaten (1, 1), wordt er een artikel gemaakt om als startpunt te gebruiken
         if(artikelLijst.isEmpty()){
             Artikel A1 = new Artikel(1, 1, null, 1, 1, 1);
             artikelLijst.add(A1);
         }
-        
+        // nu wordt er gekeken welk artikel het dichtstbij het laatst toegevoegde artikel zit
         while(!gegevenArtikelLijst.isEmpty()){
             int artikelToAdd = 0;
             int afstandTocheck = 100;
@@ -184,7 +184,7 @@ import java.util.List;
             artikelLijst.add(gegevenArtikelLijst.get(artikelToAdd));
             gegevenArtikelLijst.remove(artikelToAdd);
         }
-        
+        // hier wordt gekeken of er een artikel is toegevoegd om als startpunt te gebruiken, zo ja, wordt dat artikel verwijderd.
         if(artikelLijst.get(0).getNaam() == null){
             artikelLijst.remove(0);
         }

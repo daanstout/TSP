@@ -36,7 +36,7 @@ public class Tekenpanel extends JPanel{
     public void paintComponent (Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        
+        // hier wordt het magazijn getekend
         g.setColor(Color.BLACK);
         for(int x = 0; x < xVak; x++){
             for(int y = 0; y < yVak; y++){
@@ -45,7 +45,7 @@ public class Tekenpanel extends JPanel{
                 int a2 = y * boxHeight + padding;
             }
         }
-        
+        // hier worden alle producten in het scherm getekend.
         ArrayList<Artikel> artikelsInOrder = order.getProductLijst();
         int countArtikelen = 0;
         while(countArtikelen<artikelsInOrder.size()){
@@ -58,7 +58,7 @@ public class Tekenpanel extends JPanel{
             
             countArtikelen++;
         }
-        
+        // hier wordt de route getekend als er een algoritme is gekozen.
         if(algoritme != null){
             ArrayList<Artikel> lijst = order.getAlgoritmeLijst();
             int grootte = lijst.size()-1;

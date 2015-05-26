@@ -51,12 +51,14 @@ public class Scherm extends JFrame implements ActionListener {
         drawing = false;
         drawingCount = 0;
 
+        // initialiseren arraylisten
         vakLijst = new ArrayList<>();
         lijst = new ArrayList<>();
         Algoritmes = new ArrayList<>();
         Afstanden = new ArrayList<>();
         ALTijd = new ArrayList<>();
 
+        //initialiseren jframe
         jbStart = new JButton("Start simulatie");
         jbStop = new JButton("Stop simulatie");
         jbImport = new JButton("Import order");
@@ -67,9 +69,11 @@ public class Scherm extends JFrame implements ActionListener {
         jcAlgoritme = new JComboBox();
         jlNummer = new JLabel(String.valueOf(order.getOrderNummer()));
 
+        // wat custom fonds
         Font header = new Font("Arial", Font.BOLD, 25);
         Font defaultFont = new Font("Arial", Font.PLAIN, 14);
 
+        //dit zijn de gegevens voor de tabel om mee te beginnen
         Algoritmes.add("Volledige enumeratie");
         Algoritmes.add("Simpel gretig algoritme");
         Algoritmes.add("Volgorde van order");
@@ -80,22 +84,24 @@ public class Scherm extends JFrame implements ActionListener {
 
         Insets insets = this.getInsets();
 
-        ArrayList<String> wachtrijHeading = new ArrayList<String>(Arrays.asList("Algoritme", "Afstand (CM)"));
+        // hie rmaken we de tabel aan
+        ArrayList<String> wachtrijHeading = new ArrayList<String>(Arrays.asList("Algoritme", "Afstand"));
         tResultaat = new JTable(new PakketTableModel(Algoritmes, Afstanden, wachtrijHeading));
         getContentPane().add(new JScrollPane(tResultaat), BorderLayout.CENTER);
         tResultaat.setPreferredSize(new Dimension(275, 422));
         tResultaat.setFont(defaultFont);
         tResultaat.setRowHeight(20);
 
+        //wat gegevens om de tabel beter eruit te laten zien
         DefaultTableCellRenderer wachtrijRenderer = new DefaultTableCellRenderer();
         wachtrijRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         tResultaat.getColumnModel().getColumn(0).setCellRenderer(wachtrijRenderer);
         tResultaat.getTableHeader().setReorderingAllowed(false);
         tResultaat.getTableHeader().setFont(defaultFont);
-
         tResultaat.getColumnModel().getColumn(0).setPreferredWidth(100);
         tResultaat.getColumnModel().getColumn(1).setPreferredWidth(15);
 
+        //een panel om de tabel in te zetten, de tabel kan niet in een absolute layout
         JPanel j = new JPanel(new BorderLayout());
         j.add(tResultaat.getTableHeader(), BorderLayout.PAGE_START);
         j.add(tResultaat, BorderLayout.CENTER);
@@ -107,6 +113,7 @@ public class Scherm extends JFrame implements ActionListener {
         size = j.getPreferredSize();
         j.setBounds(insets.left + 30, insets.top + 400, size.width, size.height);
 
+        // de tekenpanel
         tSimulator = new Tekenpanel(this.order, this.algoritme);
 
         JPanel drawPanel = new JPanel();
@@ -114,6 +121,7 @@ public class Scherm extends JFrame implements ActionListener {
         drawPanel.setBounds(insets.left + 450, insets.top + 100, 400, 400);
         drawPanel.add(tSimulator);
 
+        //toevoegen van de knoppen en schermen aan het JFrame
         add(drawPanel);
         add(jbStart);
         add(jbStop);
@@ -130,6 +138,7 @@ public class Scherm extends JFrame implements ActionListener {
         jlOrdernr.setFont(defaultFont);
         jlNummer.setFont(defaultFont);
 
+        //het bepalen van de locaties van alles
         size = jbStart.getPreferredSize();
         jbStart.setBounds(insets.left + 30, insets.top + 300, size.width, size.height);
 
@@ -154,11 +163,13 @@ public class Scherm extends JFrame implements ActionListener {
         size = jlNummer.getPreferredSize();
         jlNummer.setBounds(insets.left + 180, insets.top + 220, size.width, size.height);
 
+        // keuzes aan de combobox toevoegen
         jcAlgoritme.addItem("Kies algoritme");
         jcAlgoritme.addItem("Volledige enumeratie");
         jcAlgoritme.addItem("Simpel gretig algoritme");
         jcAlgoritme.addItem("Volgorde van order");
 
+        // panel voor de combobox, netzoals de tabel kan de combobox niet in absolute layout
         JPanel a = new JPanel(new FlowLayout());
         a.add(jcAlgoritme);
         a.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -174,6 +185,7 @@ public class Scherm extends JFrame implements ActionListener {
 
         add(a);
 
+        // toevoegen van actionlisteners
         this.jbStart.addActionListener(this);
         this.jbStop.addActionListener(this);
         this.jbImport.addActionListener(this);
@@ -183,10 +195,13 @@ public class Scherm extends JFrame implements ActionListener {
         pack();
         this.setVisible(true);
 
+        // de timer
         t = new Timer(1000, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                // hier kijkt hij of er een algoritme is gekozen, als dat zo is gaat hij de route tekenen afhankelijk van het gekozen
+                // algoritme
                 if(algoritme != null){
                     tSimulator = new Tekenpanel(order, algoritme);
                     drawPanel.remove(0);
@@ -252,7 +267,7 @@ public class Scherm extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        // kijkt welke knop is ingedrukt
         if (e.getSource() == jbStart) {
             t.start();
         } else if (e.getSource() == jbStop) {

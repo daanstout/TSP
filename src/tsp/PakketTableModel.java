@@ -29,12 +29,13 @@ public class PakketTableModel extends AbstractTableModel {
        this.colNames = colNames;
        
     }
-
+    
     @Override
     public int getColumnCount() {
         return colNames.size();
     }
-
+    
+    // haalt de values op voor de desbetreffende vakken in de tabel
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         try {

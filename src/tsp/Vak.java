@@ -5,21 +5,16 @@ public class Vak {
    private int x;
    private int y;
     
-    // Maakt een gekozen vak met x en y coordinaten
-    // Met opzet:  Vak vakA1 = new Vak(1, 1, 1);
-    
     public Vak(int x, int y, int nr){
         this.x = x;
         this.y = y;
         this.vaknr = nr;
     }
     
-    // Gets vak's x coordinaten
     public int getX(){
         return this.x;
     }
     
-    // Gets vaks's y coordinaten
     public int getY(){
         return this.y;
     }
