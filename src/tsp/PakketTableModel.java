@@ -17,7 +17,6 @@ import javax.swing.table.AbstractTableModel;
 public class PakketTableModel extends AbstractTableModel {
     private List<String> data1;
     private List<String> data2;
-    private List<String> data3;
     protected List<String> colNames;
 
     

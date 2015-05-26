@@ -57,10 +57,4 @@ public class Order {
     public void emptyAlgoritmeLijst(){
         algoritmeLijst.clear();
     }
-    
-    public void importXml(){
-        //TODO
-    }
-    
-    
 }

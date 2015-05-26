@@ -146,29 +146,6 @@ import java.util.List;
                     
     }
     
-//    static ArrayList permute(ArrayList<Integer> arr, int k){
-//        ArrayList<ArrayList> a = new ArrayList<>();
-//        for(int i = k; i < arr.size(); i++){
-//        if (k == arr.size() -1){
-//            System.out.println(Arrays.toString(arr.toArray()));
-//        }
-//        
-//            Collections.swap(arr, i, k);
-//            permute(arr, k+1);
-//            Collections.swap(arr, k, i);
-//            a.add(arr);
-//        }
-//        return a;
-//    }
-    
-    public ArrayList<Artikel> volledigeEnumeratie(ArrayList<Artikel> productLijst){
-        ArrayList<Artikel> artikelLijst = new ArrayList<>();
-        
-        // code
-        
-        return artikelLijst;
-    }
-    
     public ArrayList<Artikel> nearestNeighboor(ArrayList<Artikel> productLijst){
         ArrayList<Artikel> gegevenArtikelLijst = new ArrayList<>();
         for(int i = 0;i<productLijst.size();i++){

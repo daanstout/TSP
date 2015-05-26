@@ -9,7 +9,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JFrame;
-import static tsp.Permute.permute;
 
 
 /**
