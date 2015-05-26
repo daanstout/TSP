@@ -192,8 +192,6 @@ public class Scherm extends JFrame implements ActionListener {
                     drawPanel.remove(0);
                     drawPanel.add(tSimulator);
                     if (algoritme == "Volledige enumeratie") {
-                        System.out.println(algoritme);
-//                        order.setProductLijst(tsp.volledigeEnumeratie(order.getProductLijst()));
                         if(lijst.isEmpty()){
                             order.emptyAlgoritmeLijst();
                             vakLijst = tsp.artikelToVak(order.getProductLijst());

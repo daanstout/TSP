@@ -85,7 +85,6 @@ public class Main {
         Artikel A8 = new Artikel(8, 1, "Mobiel", 5, 1, 5);
         Artikel A9 = new Artikel(9, 1, "Mobiel", 1, 5, 21);
         
-//        System.out.println(vak1.distanceTo(vak9));
         
         ArrayList<Vak> vakLijst = new ArrayList<>();
         
@@ -106,12 +105,11 @@ public class Main {
         order.addProduct(A1);
         order.addProduct(A2);
         order.addProduct(A6);
-        order.addProduct(A7);
-//        order.addProduct(A8);
+        //order.addProduct(A7);
+        //order.addProduct(A8);
 //        order.addProduct(A9);
         
-        System.out.println(order.getProductLijst());
-        System.out.println(tsp.artikelToVak(order.getProductLijst()));
+        
         Scherm scherm = new Scherm(mag, order, tsp);
         
         Insets insets = scherm.getInsets();
