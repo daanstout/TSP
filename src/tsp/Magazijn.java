@@ -16,16 +16,13 @@ public class Magazijn {
         Coordinates.add(vak);
     }
 
+ //retourneert vak op desbetreffende index (waardes 0 -> 25)
 public Vak getVak(int index){
-        return (Vak)Coordinates.get(index);
+        return (Vak) Coordinates.get(index);
     }
 
   
   public int getAantalVakken(){
       return aantalVakken;
   }
-  
-  //public static int numberOfVakken(){
-//        return Coordinates.size();
-//    }
 }
