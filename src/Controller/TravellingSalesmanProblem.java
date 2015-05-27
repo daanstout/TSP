@@ -45,6 +45,10 @@ import java.util.List;
     }
     
     public int getNearestNeighboorAfstand(){
+//        Artikel begin = new Artikel(1, 1, null, 1, 1, 1);
+        Artikel eind = new Artikel(1, 1, null, 5, 1, 1);
+        int afstand = eind.distanceTo((Artikel) order.getAlgoritmeLijst().get(order.getAlgoritmeLijst().size()-1));
+        nearestNeigboorAfstand = nearestNeigboorAfstand + afstand;
         return nearestNeigboorAfstand;
     }
     // deze kijkt welk vak bij het artikel hoort
@@ -184,10 +188,6 @@ import java.util.List;
             totaleAfstand = totaleAfstand+afstandTocheck;
             artikelLijst.add(gegevenArtikelLijst.get(artikelToAdd));
             gegevenArtikelLijst.remove(artikelToAdd);
-        }
-        // hier wordt gekeken of er een artikel is toegevoegd om als startpunt te gebruiken, zo ja, wordt dat artikel verwijderd.
-        if(artikelLijst.get(0).getNaam() == null){
-            artikelLijst.remove(0);
         }
         
         nearestNeigboorAfstand = totaleAfstand;

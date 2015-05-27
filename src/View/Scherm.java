@@ -219,12 +219,15 @@ public class Scherm extends JFrame implements ActionListener {
                         if (lijst.isEmpty()) {
                             order.emptyAlgoritmeLijst();
                             lijst = tsp.nearestNeighboor(order.getProductLijst());
+                            lijst.add(new Artikel(1, 1, null, 5, 1, 1));
                         }
                         if (!lijst.isEmpty()) {
+                            System.out.println(lijst);
                             order.addAlgoritmeLijst(lijst.get(0));
                             lijst.remove(0);
                         }
                         if (lijst.isEmpty()) {
+                            
                             Afstanden.set(1, Integer.toString(tsp.getNearestNeighboorAfstand()));
                             t.stop();
                         }
