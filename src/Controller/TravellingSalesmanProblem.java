@@ -121,6 +121,8 @@ import java.util.List;
 
             // Standaard startpunt
             Vak startPunt = new Vak(1, 1, 0);
+            // standaard eindpunt
+            Vak eindPunt = new Vak(5, 1, 26);
 
             int totDistance = 0;
             int count = 1;
@@ -134,7 +136,7 @@ import java.util.List;
                 
                 // Weer terug naar startpunt als alles is langsgeweest
                 if (count == arr.size()) {
-                    totDistance += vak2.distanceTo(startPunt);
+                    totDistance += vak2.distanceTo(eindPunt);
                 }
                 
                 for(int l = 1; l < switchedRoutes.size();l++) {
