@@ -206,6 +206,7 @@ public class Scherm extends JFrame implements ActionListener {
                             vakLijst = tsp.artikelToVak(order.getProductLijst());
                             TravellingSalesmanProblem.permute(vakLijst, 0);
                             lijst = tsp.vakToArtikel(tsp.kortsteRoute);
+                            lijst.add(new Artikel(1, 1, null, 5, 1, 1));
                         }
                         if (!lijst.isEmpty()) {
                             order.addAlgoritmeLijst(lijst.get(0));
@@ -223,7 +224,6 @@ public class Scherm extends JFrame implements ActionListener {
                         }
                         if (!lijst.isEmpty()) {
                             order.addAlgoritmeLijst(lijst.get(0));
-                            System.out.println(order.getAlgoritmeLijst());
                             lijst.remove(0);
                         }
                         if (lijst.isEmpty()) {
@@ -242,7 +242,6 @@ public class Scherm extends JFrame implements ActionListener {
                             }else{
                                 order.addAlgoritmeLijst(new Artikel(1, 1, null, 5, 1, 99));
                             }
-                            System.out.println(order.getAlgoritmeLijst());
                             
                             if (drawingCount == order.getProductLijst().size()) {
                                 drawing = false;
