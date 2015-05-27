@@ -72,12 +72,38 @@ public class Tekenpanel extends JPanel{
                 int artikel2X = lijst.get(count+1).getX()-1;
                 int artikel2Y = lijst.get(count+1).getY()-1;
 
-
-
                 g2.setColor(Color.RED);
                 g2.setStroke(new BasicStroke(2));
-
-                g2.drawLine(10 + (38 + (76*artikel1X)), 10 + (76*5) - (38+(76*artikel1Y)), 10 + (38 + (76*artikel2X)), 10 + (76*5) - (38+(76*artikel2Y)));
+                
+                if(artikel1Y == artikel2Y){
+                    double dubbel = (artikel1X + artikel2X);
+                    double half = (dubbel / 2);
+                    int half1 = (int) (10 + (38 + (76*half)));
+                    int half2 = (int) (10 + (38 + (76*half)));
+                    int half3 = (int)(10 + (38 + (76*half)));
+                    g2.drawLine(10 + (38 + (76*artikel1X)), 2 + (76*5 - (38+(76*artikel1Y))), half1,  10 + (76*5) - (38+(76*artikel2Y)));
+                    g2.drawLine(10 + (38 + (76*artikel1X)), 18 + (76*5 - (38+(76*artikel1Y))), half2,  10 + (76*5) - (38+(76*artikel2Y)));
+                    g2.drawLine(half3, 10 + (76*5) - (38+(76*artikel1Y)), 10 + (38 + (76*artikel2X)), 10 + (76*5) - (38+(76*artikel2Y)));
+                }else if(artikel1X == artikel2X){
+                    double dubbel = (artikel1Y + artikel2Y);
+                    double half = (dubbel / 2);
+                    int half1 = (int)(10 + (76*5) - (38+(76*half)));
+                    int half2 = (int)(10 + (76*5) - (38+(76*half)));
+                    int half3 = (int) (10 + (76*5) - (38+(76*half)));
+                    g2.drawLine(2 + (38 + (76*artikel1X)), 10 + (76*5 - (38+(76*artikel1Y))), 10 + (38 + (76*artikel2X)), half1);
+                    g2.drawLine(18 + (38 + (76*artikel1X)), 10 + (76*5 - (38+(76*artikel1Y))), 10 + (38 + (76*artikel2X)), half2);
+                    g2.drawLine(10 + (38 + (76*artikel1X)), half3, 10 + (38 + (76*artikel2X)), 10 + (76*5) - (38+(76*artikel2Y)));
+                }else if((artikel1X != artikel2X) && (artikel1Y != artikel2Y)){
+                    g2.drawLine(10 + (38 + (76*artikel1X)), 2 + (76*5 - (38+(76*artikel1Y))), 10 + (38 + (76*artikel2X)),  10 + (76*5) - (38+(76*artikel1Y)));
+                    g2.drawLine(10 + (38 + (76*artikel1X)), 18 + (76*5 - (38+(76*artikel1Y))), 10 + (38 + (76*artikel2X)),  10 + (76*5) - (38+(76*artikel1Y)));
+                    g2.drawLine( 10 + (38 + (76*artikel2X)),  10 + (76*5) - (38+(76*artikel1Y)), 10 + (38 + (76*artikel2X)), 10 + (76*5) - (38+(76*artikel2Y)));
+                }
+                
+                
+                
+                
+                
+//                g2.drawLine(10 + (38 + (76*artikel1X)), 10 + (76*5) - (38+(76*artikel1Y)), 10 + (38 + (76*artikel2X)), 10 + (76*5) - (38+(76*artikel2Y)));
 
                 count++;
             }

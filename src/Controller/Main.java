@@ -79,16 +79,15 @@ public class Main {
         mag.addVak(vak25);
         
         
-        Artikel A1 = new Artikel(1, 1, "Mobiel", 2, 1, 2);
-        Artikel A2 = new Artikel(2, 1, "Mobiel", 2, 5, 22);
-        Artikel A3 = new Artikel(3, 1, "Mobiel", 1, 2, 6);
+        Artikel A1 = new Artikel(1, 1, "Mobiel", 2, 4, 2);
+        Artikel A2 = new Artikel(2, 1, "Mobiel", 2, 3, 22);
+        Artikel A3 = new Artikel(3, 1, "Mobiel", 4, 3, 6);
         Artikel A4 = new Artikel(4, 1, "Mobiel", 3, 3, 13);
         Artikel A5 = new Artikel(5, 1, "Mobiel", 5, 5, 25);
         Artikel A6 = new Artikel(6, 1, "Mobiel", 4, 4, 19);
-        Artikel A7 = new Artikel(7, 1, "Mobiel", 2, 4, 17);
+        Artikel A7 = new Artikel(7, 1, "Mobiel", 4, 1, 17);
         Artikel A8 = new Artikel(8, 1, "Mobiel", 5, 1, 5);
         Artikel A9 = new Artikel(9, 1, "Mobiel", 1, 5, 21);
-        
         
         ArrayList<Vak> vakLijst = new ArrayList<>();
         
@@ -104,14 +103,14 @@ public class Main {
         TravellingSalesmanProblem tsp = new TravellingSalesmanProblem(mag, order);
         
         order.addProduct(A3);
-        order.addProduct(A4);
-        order.addProduct(A5);
+//        order.addProduct(A4);
+//        order.addProduct(A5);
         order.addProduct(A1);
         order.addProduct(A2);
         order.addProduct(A6);
-        //order.addProduct(A7);
-        //order.addProduct(A8);
-        //order.addProduct(A9);
+//        order.addProduct(A7);
+//        order.addProduct(A8);
+//        order.addProduct(A9);
         
         
         Scherm scherm = new Scherm(mag, order, tsp);
