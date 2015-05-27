@@ -1,4 +1,4 @@
-package tsp;
+package View;
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -10,12 +10,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.table.DefaultTableCellRenderer;
+import Controller.*;
+import Model.*;
 
 public class Scherm extends JFrame implements ActionListener {
 
     private JButton jbStart;
     private JButton jbStop;
-    private JButton jbImport;
     private JLabel jlSimulatie;
     private JLabel jlResultaat;
     private JLabel jlAlgoritme;
@@ -61,7 +62,6 @@ public class Scherm extends JFrame implements ActionListener {
         //initialiseren jframe
         jbStart = new JButton("Start simulatie");
         jbStop = new JButton("Stop simulatie");
-        jbImport = new JButton("Import order");
         jlSimulatie = new JLabel("Simulatie");
         jlResultaat = new JLabel("Resultaat");
         jlAlgoritme = new JLabel("Algoritme");
@@ -80,7 +80,6 @@ public class Scherm extends JFrame implements ActionListener {
         Afstanden.add("-");
         Afstanden.add("-");
         Afstanden.add("-");
-        
 
         Insets insets = this.getInsets();
 
@@ -125,7 +124,6 @@ public class Scherm extends JFrame implements ActionListener {
         add(drawPanel);
         add(jbStart);
         add(jbStop);
-        add(jbImport);
         add(jlSimulatie);
         add(jlResultaat);
         add(jlAlgoritme);
@@ -144,9 +142,6 @@ public class Scherm extends JFrame implements ActionListener {
 
         size = jbStop.getPreferredSize();
         jbStop.setBounds(insets.left + 180, insets.top + 300, size.width, size.height);
-
-        size = jbImport.getPreferredSize();
-        jbImport.setBounds(insets.left + 30, insets.top + 125, size.width, size.height);
 
         size = jlSimulatie.getPreferredSize();
         jlSimulatie.setBounds(insets.left + 450, insets.top + 45, size.width, size.height);
@@ -188,7 +183,6 @@ public class Scherm extends JFrame implements ActionListener {
         // toevoegen van actionlisteners
         this.jbStart.addActionListener(this);
         this.jbStop.addActionListener(this);
-        this.jbImport.addActionListener(this);
         this.jcAlgoritme.addActionListener(this);
 
         revalidate();
@@ -202,63 +196,61 @@ public class Scherm extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 // hier kijkt hij of er een algoritme is gekozen, als dat zo is gaat hij de route tekenen afhankelijk van het gekozen
                 // algoritme
-                if(algoritme != null){
+                if (algoritme != null) {
                     tSimulator = new Tekenpanel(order, algoritme);
                     drawPanel.remove(0);
                     drawPanel.add(tSimulator);
                     if (algoritme == "Volledige enumeratie") {
-                        if(lijst.isEmpty()){
+                        if (lijst.isEmpty()) {
                             order.emptyAlgoritmeLijst();
                             vakLijst = tsp.artikelToVak(order.getProductLijst());
-                            System.out.println(vakLijst);
-                            tsp.permute(vakLijst, 0);
-                            System.out.println("Kortste route : "+tsp.kortsteDistance + " " + tsp.kortsteRoute);
+                            TravellingSalesmanProblem.permute(vakLijst, 0);
                             lijst = tsp.vakToArtikel(tsp.kortsteRoute);
                         }
-                        if(!lijst.isEmpty()){
+                        if (!lijst.isEmpty()) {
                             order.addAlgoritmeLijst(lijst.get(0));
                             lijst.remove(0);
                         }
-                        if(lijst.isEmpty()){
+                        if (lijst.isEmpty()) {
                             Afstanden.set(0, Integer.toString(tsp.kortsteDistance));
                             t.stop();
                         }
                     } else if (algoritme == "Simpel gretig algoritme") {
-                        if(lijst.isEmpty()){
+                        if (lijst.isEmpty()) {
                             order.emptyAlgoritmeLijst();
                             lijst = tsp.nearestNeighboor(order.getProductLijst());
                         }
-                        if(!lijst.isEmpty()){
+                        if (!lijst.isEmpty()) {
                             order.addAlgoritmeLijst(lijst.get(0));
                             lijst.remove(0);
                         }
-                        if(lijst.isEmpty()){
+                        if (lijst.isEmpty()) {
                             Afstanden.set(1, Integer.toString(tsp.getNearestNeighboorAfstand()));
                             t.stop();
                         }
                     } else if (algoritme == "Volgorde van order") {
-                        if(!drawing){
+                        if (!drawing) {
                             order.emptyAlgoritmeLijst();
                             drawing = true;
                         }
-                        if(drawing && drawingCount < order.getProductLijst().size()){
+                        if (drawing && drawingCount < order.getProductLijst().size()) {
                             order.addAlgoritmeLijst(order.getArtikel(drawingCount));
                             drawingCount++;
-                            if(drawingCount == order.getProductLijst().size()){
+                            if (drawingCount == order.getProductLijst().size()) {
                                 drawing = false;
                             }
                         }
-                        if(!drawing){
+                        if (!drawing) {
                             Afstanden.set(2, Integer.toString(tsp.getOrderAfstand(order.getProductLijst())));
                             drawingCount = 0;
                             t.stop();
                         }
-                        
+
                     }
-                    
+
                     revalidate();
                     repaint();
-                }else{
+                } else {
                     t.stop();
                 }
             }
@@ -272,9 +264,7 @@ public class Scherm extends JFrame implements ActionListener {
             t.start();
         } else if (e.getSource() == jbStop) {
             t.stop();
-        } else if (e.getSource() == jbImport) {
-            System.out.println("Import");
-        } else if (e.getSource() == jcAlgoritme){
+        } else if (e.getSource() == jcAlgoritme) {
             JComboBox comboBox = (JComboBox) e.getSource();
 
             Object selected = comboBox.getSelectedItem();

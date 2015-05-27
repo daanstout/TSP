@@ -1,5 +1,6 @@
-package tsp;
+package Controller;
 
+import Model.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -93,7 +94,7 @@ import java.util.List;
         return artikellen;
     }
     // deze funtie genereert alle mogelijke routes
-    static void permute(ArrayList<Vak> arrIn, int k) {
+    public static void permute(ArrayList<Vak> arrIn, int k) {
         ArrayList<Vak> arr = new ArrayList<>();
         
         for (Vak vak : arrIn) {

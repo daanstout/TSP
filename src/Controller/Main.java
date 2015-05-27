@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tsp;
+package controller;
 
+import Controller.TravellingSalesmanProblem;
+import Model.*;
+import View.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import javax.swing.JFrame;
 
 
 /**
@@ -19,6 +20,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //huidig is het magazijn gemaakt voor 25 vakken.
+        //door hier artikelen en vakken in order en magazijn ,respectievelijk, te plaatsen kan deze gemakkelijk vergroot worden.
+        //we hebben dit niet in een interface gebouwd omdat het doel van de simulatie een algoritme test is.
         
         Magazijn mag = new Magazijn(25);
         
@@ -74,6 +78,7 @@ public class Main {
         mag.addVak(vak24);
         mag.addVak(vak25);
         
+        
         Artikel A1 = new Artikel(1, 1, "Mobiel", 2, 1, 2);
         Artikel A2 = new Artikel(2, 1, "Mobiel", 2, 5, 22);
         Artikel A3 = new Artikel(3, 1, "Mobiel", 1, 2, 6);
@@ -106,7 +111,7 @@ public class Main {
         order.addProduct(A6);
         //order.addProduct(A7);
         //order.addProduct(A8);
-//        order.addProduct(A9);
+        //order.addProduct(A9);
         
         
         Scherm scherm = new Scherm(mag, order, tsp);

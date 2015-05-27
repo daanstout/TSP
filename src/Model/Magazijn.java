@@ -1,5 +1,5 @@
 
-package tsp;
+package Model;
 
 import java.util.ArrayList;
 

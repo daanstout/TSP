@@ -1,4 +1,4 @@
-package tsp;
+package Model;
 
 public class Vak {
    private int vaknr;
