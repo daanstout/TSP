@@ -44,7 +44,7 @@ import java.util.List;
         return afstand;
     }
     
-    public int getNearestNeighboorAfstand(){
+    public int getNearestNeighbourAfstand(){
         return nearestNeigboorAfstand;
     }
     // deze kijkt welk vak bij het artikel hoort
@@ -120,18 +120,12 @@ import java.util.List;
 
             int totDistance = 0;
             int count = 1;
-//            totDistance += startPunt.distanceTo(arr.get(0));
             for (int j = 0; j < arr.size() - 1; j++) {
 
                 Vak vak = arr.get(j);
                 Vak vak2 = arr.get(j + 1);
                 count++;
                 totDistance += vak.distanceTo(vak2);
-                
-                // Weer terug naar startpunt als alles is langsgeweest
-//                if (count == arr.size()) {
-//                    totDistance += vak2.distanceTo(startPunt);
-//                }
                 
                 for(int l = 1; l < switchedRoutes.size();l++) {
                         if(afstanden.get(l) < kortsteDistance) {

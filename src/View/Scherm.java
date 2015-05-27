@@ -225,7 +225,7 @@ public class Scherm extends JFrame implements ActionListener {
                             lijst.remove(0);
                         }
                         if (lijst.isEmpty()) {
-                            Afstanden.set(1, Integer.toString(tsp.getNearestNeighboorAfstand()));
+                            Afstanden.set(1, Integer.toString(tsp.getNearestNeighbourAfstand()));
                             t.stop();
                         }
                     } else if (algoritme == "Volgorde van order") {
