@@ -24,6 +24,7 @@ public class Order {
         this.klant = klant;
         productLijst = new ArrayList<>();
         algoritmeLijst = new ArrayList<>();
+        algoritmeLijst.add(new Artikel(1, 1, null, 1, 1, 99));
     }
     
     public void addProduct(Artikel a){
@@ -56,5 +57,6 @@ public class Order {
     
     public void emptyAlgoritmeLijst(){
         algoritmeLijst.clear();
+        algoritmeLijst.add(new Artikel(1, 1, null, 1, 1, 99));
     }
 }

@@ -222,8 +222,8 @@ public class Scherm extends JFrame implements ActionListener {
                             lijst.add(new Artikel(1, 1, null, 5, 1, 1));
                         }
                         if (!lijst.isEmpty()) {
-                            System.out.println(lijst);
                             order.addAlgoritmeLijst(lijst.get(0));
+                            System.out.println(order.getAlgoritmeLijst());
                             lijst.remove(0);
                         }
                         if (lijst.isEmpty()) {
@@ -236,12 +236,18 @@ public class Scherm extends JFrame implements ActionListener {
                             order.emptyAlgoritmeLijst();
                             drawing = true;
                         }
-                        if (drawing && drawingCount < order.getProductLijst().size()) {
-                            order.addAlgoritmeLijst(order.getArtikel(drawingCount));
-                            drawingCount++;
+                        if (drawing && drawingCount - 1 < order.getProductLijst().size()) {
+                            if(drawingCount < order.getProductLijst().size()){
+                                order.addAlgoritmeLijst(order.getArtikel(drawingCount));
+                            }else{
+                                order.addAlgoritmeLijst(new Artikel(1, 1, null, 5, 1, 99));
+                            }
+                            System.out.println(order.getAlgoritmeLijst());
+                            
                             if (drawingCount == order.getProductLijst().size()) {
                                 drawing = false;
                             }
+                            drawingCount++;
                         }
                         if (!drawing) {
                             Afstanden.set(2, Integer.toString(tsp.getOrderAfstand(order.getProductLijst())));

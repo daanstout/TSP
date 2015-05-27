@@ -190,6 +190,10 @@ import java.util.List;
             gegevenArtikelLijst.remove(artikelToAdd);
         }
         
+        // hier wordt gekeken of er een artikel is toegevoegd om als startpunt te gebruiken, zo ja, wordt dat artikel verwijderd.
+        if(artikelLijst.get(0).getNaam() == null){
+            artikelLijst.remove(0);
+        }
         nearestNeigboorAfstand = totaleAfstand;
         
         return artikelLijst;
