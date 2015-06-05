@@ -122,7 +122,7 @@ import java.util.List;
             // Standaard startpunt
             Vak startPunt = new Vak(1, 1, 0);
             // standaard eindpunt
-            Vak eindPunt = new Vak(5, 1, 26);
+            Vak eindPunt = new Vak(5, 5, 26);
 
             int totDistance = 0;
             int count = 1;
