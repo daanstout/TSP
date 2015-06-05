@@ -102,15 +102,15 @@ public class Main {
         
         TravellingSalesmanProblem tsp = new TravellingSalesmanProblem(mag, order);
         
-        order.addProduct(A3);
-//        order.addProduct(A4);
-//        order.addProduct(A5);
+//        order.addProduct(A3);
+        order.addProduct(A4);
+        order.addProduct(A5);
         order.addProduct(A1);
         order.addProduct(A2);
-        order.addProduct(A6);
-//        order.addProduct(A7);
-//        order.addProduct(A8);
-//        order.addProduct(A9);
+//        order.addProduct(A6);
+        order.addProduct(A7);
+        order.addProduct(A8);
+        order.addProduct(A9);
         
         
         Scherm scherm = new Scherm(mag, order, tsp);
